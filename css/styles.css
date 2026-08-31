@@ -89,6 +89,11 @@ h1, h2, h3 {
   object-fit: contain;
 }
 
+.logo > .logo-mark {
+  transform: scale(1.5);
+  transform-origin: center;
+}
+
 .logo-mark-sm {
   width: 24px;
   height: 24px;
