@@ -32,19 +32,36 @@
   <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
   <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      "name": "Legión Digital Studio",
+      "url": "https://legiondigitalstudio.com/",
+      "logo": "https://legiondigitalstudio.com/images/logo.png",
+      "image": "https://legiondigitalstudio.com/images/og-image.png",
+      "email": "legionario@legiondigitalstudio.com",
+      "areaServed": { "@type": "Country", "name": "Colombia" },
+      "serviceType": ["Desarrollo web", "SEO técnico", "Automatización", "Identidad digital"]
+    }
+  </script>
 </head>
 <body>
 
   <header class="site-header">
     <div class="container header-inner">
-      <a href="#" class="logo">
-        <img src="images/logo.png" alt="Legión Digital Studio" class="logo-mark">
+      <a href="#inicio" class="logo" aria-label="Legión Digital Studio, ir al inicio">
+        <img src="images/logo.png" alt="Legión Digital Studio" class="logo-mark" width="72" height="72">
         Legión<span>Digital Studio</span>
       </a>
-      <nav class="nav">
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Abrir menú de navegación">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="nav" id="primary-nav" aria-label="Navegación principal">
         <a href="#servicios">Servicios</a>
         <a href="#proceso">Proceso</a>
         <a href="#trabajo">Trabajo</a>
+        <a href="#preguntas">Preguntas</a>
         <a href="#contacto" class="nav-cta">Cotizar proyecto</a>
       </nav>
     </div>
@@ -52,7 +69,7 @@
 
   <main>
 
-    <section class="hero">
+    <section class="hero" id="inicio">
       <div class="parallax-shape shape-1" data-speed="0.15" aria-hidden="true"></div>
       <div class="parallax-shape shape-2" data-speed="0.3" aria-hidden="true"></div>
       <div class="parallax-shape shape-3" data-speed="0.08" aria-hidden="true"></div>
@@ -68,7 +85,7 @@
         </div>
 
         <div class="hero-visual" data-speed="-0.06">
-          <img src="images/hero-team.jpg" alt="Equipo de Legión Digital Studio trabajando en un proyecto web" class="hero-photo">
+          <img src="images/hero-team.jpg" alt="Equipo de Legión Digital Studio trabajando en un proyecto web" class="hero-photo" width="1600" height="678" fetchpriority="high" decoding="async">
           <div class="float-card float-card-1">
             <span class="dot"></span> SEO técnico
           </div>
@@ -81,7 +98,7 @@
 
     <section class="stats">
       <div class="container stats-grid">
-        <div class="stat"><strong>2</strong><span>sitios en producción</span></div>
+        <div class="stat"><strong>3</strong><span>sitios desarrollados</span></div>
         <div class="stat"><strong>100%</strong><span>responsive y rápido</span></div>
         <div class="stat"><strong>SEO</strong><span>técnico incluido</span></div>
         <div class="stat"><strong>1:1</strong><span>trato directo, sin intermediarios</span></div>
@@ -191,6 +208,40 @@
               <span class="work-link">Ver sitio →</span>
             </div>
           </a>
+          <a href="https://xiomyperfumeria.com" target="_blank" rel="noopener" class="work-card">
+            <div class="work-thumb work-thumb-c">Xiomy Perfumería</div>
+            <div class="work-body">
+              <span class="work-tag">Proyecto real</span>
+              <h3>Xiomy Perfumería</h3>
+              <p>Experiencia comercial para una perfumería colombiana: catálogo de muestra, asesoría por WhatsApp, SEO técnico y diseño adaptable.</p>
+              <span class="work-link">Ver sitio →</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="preguntas" class="faq">
+      <div class="container faq-inner">
+        <p class="eyebrow eyebrow-center">Preguntas frecuentes</p>
+        <h2 class="section-title">Lo esencial antes de comenzar.</h2>
+        <div class="faq-list">
+          <details>
+            <summary>¿Cuánto tarda un proyecto web?</summary>
+            <p>Depende del alcance y de la disponibilidad del contenido. Después de conocer tu objetivo definimos entregables, responsables y un cronograma claro.</p>
+          </details>
+          <details>
+            <summary>¿El sitio queda adaptado a celulares?</summary>
+            <p>Sí. Diseñamos y probamos cada proyecto para celulares, tabletas y computadores, con especial atención a legibilidad, navegación y velocidad.</p>
+          </details>
+          <details>
+            <summary>¿Incluyen dominio, correo y publicación?</summary>
+            <p>Podemos acompañarte en la configuración del dominio, correo profesional, alojamiento y publicación. La propuesta especifica qué servicios externos requiere tu proyecto.</p>
+          </details>
+          <details>
+            <summary>¿Cómo solicito una cotización?</summary>
+            <p>Completa el formulario con el tipo de proyecto y una breve descripción. Te responderemos por correo para entender el alcance y preparar una propuesta.</p>
+          </details>
         </div>
       </div>
     </section>
@@ -224,7 +275,11 @@
             <label for="message">Cuéntanos de tu proyecto</label>
             <textarea id="message" name="message" rows="4" required></textarea>
           </div>
-          <button type="submit" class="btn btn-primary">Enviar solicitud</button>
+          <div class="consent-field">
+            <input type="checkbox" id="privacy-consent" name="privacy_consent" value="Acepto" required>
+            <label for="privacy-consent">Autorizo a Legión Digital Studio a usar mis datos para responder esta solicitud, de acuerdo con la <a href="privacy.html" target="_blank" rel="noopener">política de tratamiento de datos</a>.</label>
+          </div>
+          <button type="submit" class="btn btn-primary" data-conversion="form_submit">Enviar solicitud</button>
           <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
         </form>
 
@@ -236,10 +291,10 @@
 
   <footer class="site-footer">
     <div class="container footer-inner">
-      <p class="footer-brand"><img src="images/logo.png" alt="" class="logo-mark logo-mark-sm">&copy; 2026 Legión Digital Studio. Todos los derechos reservados.</p>
-      <div class="footer-social">
-        <a href="#" aria-label="Instagram">Instagram</a>
-        <a href="#" aria-label="Facebook">Facebook</a>
+      <p class="footer-brand"><img src="images/logo.png" alt="" class="logo-mark logo-mark-sm" width="24" height="24">&copy; 2026 Legión Digital Studio. Todos los derechos reservados.</p>
+      <div class="footer-links">
+        <a href="privacy.html">Privacidad</a>
+        <a href="mailto:legionario@legiondigitalstudio.com">Contacto</a>
       </div>
     </div>
   </footer>
