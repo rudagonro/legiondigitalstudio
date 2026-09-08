@@ -5,10 +5,10 @@
   "type": "module",
   "scripts": {
     "dev": "vite dev",
-    "build": "vite build",
+    "build": "powershell -NoProfile -ExecutionPolicy Bypass -File ./build-site.ps1",
     "build:dev": "vite build --mode development",
     "preview": "vite preview",
-    "lint": "eslint .",
+    "lint": "eslint src",
     "format": "prettier --write ."
   },
   "overrides": {

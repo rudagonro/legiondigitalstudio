@@ -2,3 +2,22 @@ images/a man and a woman, collaborating around a laptop in a bright.png
 images/a man and a woman, collaborating around a laptop in a bright (2).png
 images/professional's hands typing on a modern laptop keyboard.png
 .claude/
+
+# Aplicación web y artefactos locales regenerables
+node_modules/
+.output/
+dist/
+dist-ssr/
+.workspace/
+.wrangler/
+.vinxi/
+.tanstack/
+.nitro/
+*.tsbuildinfo
+*.local
+.published-index.backup
+.published-assets.backup/
+
+# Client project folders (SIGCAM and siblings) are their own independent repos,
+# not part of the marketing site.
+Projects Legion Digital Studio/
