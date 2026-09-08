@@ -1,5 +1,5 @@
-import { Link } from "@tanstack/react-router";
-import { Menu, X } from "lucide-react";
+import { Link, useRouterState } from "@tanstack/react-router";
+import { ArrowLeft, Menu, X } from "lucide-react";
 import { useState } from "react";
 import logoImg from "@/assets/legion-logo.png";
 import { site } from "@/lib/site-data";
@@ -15,6 +15,19 @@ const nav = [
 
 export function Header() {
   const [open, setOpen] = useState(false);
+  const pathname = useRouterState({ select: (state) => state.location.pathname });
+  const isHome = pathname === "/";
+
+  const goBack = () => {
+    setOpen(false);
+
+    if (window.history.length > 1) {
+      window.history.back();
+      return;
+    }
+
+    window.location.assign("/");
+  };
 
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-background/85 backdrop-blur-lg">
@@ -83,6 +96,25 @@ export function Header() {
             ))}
           </div>
         </nav>
+      ) : null}
+
+      {!isHome ? (
+        <div className="border-t border-border/70 bg-background/90">
+          <div className="container-page flex h-11 items-center">
+            <button
+              type="button"
+              onClick={goBack}
+              className="group inline-flex items-center gap-2 rounded-full px-1 py-2 text-sm font-semibold text-muted-foreground transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+              aria-label="Volver a la página anterior"
+            >
+              <ArrowLeft
+                className="h-4 w-4 transition-transform group-hover:-translate-x-1"
+                aria-hidden="true"
+              />
+              Volver a la página anterior
+            </button>
+          </div>
+        </div>
       ) : null}
     </header>
   );
