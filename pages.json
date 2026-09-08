@@ -1,0 +1,75 @@
+{
+  "pages": [
+    {
+      "path": "/"
+    },
+    {
+      "path": "/contacto"
+    },
+    {
+      "path": "/nosotros"
+    },
+    {
+      "path": "/precios"
+    },
+    {
+      "path": "/privacidad"
+    },
+    {
+      "path": "/servicios/"
+    },
+    {
+      "path": "/trabajo/"
+    },
+    {
+      "path": "/servicios",
+      "fromCrawl": true
+    },
+    {
+      "path": "/trabajo",
+      "fromCrawl": true
+    },
+    {
+      "path": "/servicios/paginas-web",
+      "fromCrawl": true
+    },
+    {
+      "path": "/servicios/desarrollo-software",
+      "fromCrawl": true
+    },
+    {
+      "path": "/servicios/tiendas-en-linea",
+      "fromCrawl": true
+    },
+    {
+      "path": "/servicios/seo-tecnico",
+      "fromCrawl": true
+    },
+    {
+      "path": "/servicios/landing-pages",
+      "fromCrawl": true
+    },
+    {
+      "path": "/trabajo/legioncoin",
+      "fromCrawl": true
+    },
+    {
+      "path": "/trabajo/omg-serviteca",
+      "fromCrawl": true
+    },
+    {
+      "path": "/trabajo/illuminare",
+      "fromCrawl": true
+    },
+    {
+      "path": "/trabajo/abogada-mejia-rivera",
+      "fromCrawl": true
+    },
+    {
+      "path": "/trabajo/xiomy-perfumeria",
+      "fromCrawl": true
+    }
+  ],
+  "host": "https://legiondigitalstudio.com",
+  "lastBuilt": "2026-09-08T12:42:23.549Z"
+}
