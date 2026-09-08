@@ -62,11 +62,12 @@ function Contact() {
         body: JSON.stringify({
           access_key: WEB3FORMS_ACCESS_KEY,
           subject: `Nueva cotización: ${type}`,
-          from_name: "Formulario de Legion Digital Studio",
-          name: name.trim(),
-          email: email.trim(),
+          from_name: "Formulario de Legión Digital Studio",
+          replyto: email.trim(),
+          Nombre: name.trim(),
+          "Correo electrónico": email.trim(),
           "Tipo de proyecto": type,
-          message: detail.trim(),
+          Mensaje: detail.trim(),
           botcheck: "",
         }),
       });
