@@ -34,27 +34,61 @@ const projectTypes = [
   "Otro",
 ];
 
+const WEB3FORMS_ACCESS_KEY = "5c7ed16a-d71b-4386-9b5d-6fdbffbe16a8";
+type SubmitStatus = "idle" | "sending" | "success" | "error";
+
 function Contact() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [type, setType] = useState(projectTypes[0]);
   const [detail, setDetail] = useState("");
   const [consent, setConsent] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<SubmitStatus>("idle");
+  const [submitMessage, setSubmitMessage] = useState("");
 
-  const ready = name.trim() !== "" && detail.trim() !== "" && consent;
+  const ready = name.trim() !== "" && email.trim() !== "" && detail.trim() !== "" && consent;
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    if (!ready) return;
-    const text = [
-      `Hola Legión, soy ${name}.`,
-      `Tipo de proyecto: ${type}.`,
-      email.trim() ? `Mi correo: ${email}.` : "",
-      `Detalle: ${detail}`,
-    ]
-      .filter(Boolean)
-      .join("\n");
-    window.open(`https://wa.me/573235688278?text=${encodeURIComponent(text)}`, "_blank");
+    if (!ready || submitStatus === "sending") return;
+
+    setSubmitStatus("sending");
+    setSubmitMessage("Enviando tu solicitud…");
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_ACCESS_KEY,
+          subject: `Nueva cotización: ${type}`,
+          from_name: "Formulario de Legion Digital Studio",
+          name: name.trim(),
+          email: email.trim(),
+          "Tipo de proyecto": type,
+          message: detail.trim(),
+          botcheck: "",
+        }),
+      });
+      const result = (await response.json()) as { success?: boolean; message?: string };
+
+      if (!response.ok || !result.success) {
+        throw new Error(result.message || "No fue posible enviar la solicitud.");
+      }
+
+      setSubmitStatus("success");
+      setSubmitMessage("¡Mensaje enviado! Te responderemos muy pronto.");
+      setName("");
+      setEmail("");
+      setType(projectTypes[0]);
+      setDetail("");
+      setConsent(false);
+    } catch {
+      setSubmitStatus("error");
+      setSubmitMessage(
+        "No pudimos enviar el mensaje. Intenta nuevamente o escríbenos por WhatsApp.",
+      );
+    }
   }
 
   return (
@@ -115,13 +149,14 @@ function Contact() {
 
             <div>
               <label htmlFor="email" className="mb-2 block text-sm font-medium">
-                Correo <span className="text-muted-foreground">(opcional)</span>
+                Correo
               </label>
               <input
                 id="email"
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
+                required
                 className="w-full rounded-md border border-input bg-background px-3 py-2.5 text-sm outline-none focus:border-primary"
               />
             </div>
@@ -177,35 +212,28 @@ function Contact() {
 
             <button
               type="submit"
-              disabled={!ready}
+              disabled={!ready || submitStatus === "sending"}
               className="btn-base btn-primary w-full disabled:opacity-50"
             >
-              Enviar por WhatsApp
+              {submitStatus === "sending" ? "Enviando…" : "Enviar solicitud"}
             </button>
-            <button
-              type="button"
-              disabled={!ready}
-              onClick={() => {
-                if (!ready) return;
-                const body = [
-                  `Hola Legión, soy ${name}.`,
-                  `Tipo de proyecto: ${type}.`,
-                  email.trim() ? `Mi correo: ${email}.` : "",
-                  `Detalle: ${detail}`,
-                ]
-                  .filter(Boolean)
-                  .join("\n");
-                window.location.href = `mailto:${site.email}?subject=${encodeURIComponent(
-                  `Cotización: ${type}`,
-                )}&body=${encodeURIComponent(body)}`;
-              }}
-              className="btn-base btn-outline w-full disabled:opacity-50"
-            >
-              Enviar por correo
-            </button>
+            {submitMessage && (
+              <p
+                role="status"
+                aria-live="polite"
+                className={`rounded-md border px-4 py-3 text-sm ${
+                  submitStatus === "success"
+                    ? "border-emerald-300 bg-emerald-50 text-emerald-800"
+                    : submitStatus === "error"
+                      ? "border-red-300 bg-red-50 text-red-800"
+                      : "border-border bg-muted text-muted-foreground"
+                }`}
+              >
+                {submitMessage}
+              </p>
+            )}
             <p className="text-xs text-muted-foreground">
-              Con WhatsApp se abre el chat con tu mensaje listo; con correo se abre tu app de email
-              hacia {site.email}.
+              El mensaje se envía directamente a {site.email} sin abrir otra aplicación.
             </p>
           </form>
         </div>

@@ -87,6 +87,15 @@ function Privacy() {
           </section>
 
           <section>
+            <h2 className="font-display text-xl text-foreground">Procesamiento del formulario</h2>
+            <p className="mt-3">
+              Para recibir las solicitudes enviadas desde el sitio utilizamos Web3Forms como
+              proveedor tecnológico. Los datos se transmiten exclusivamente para entregar el mensaje
+              a Legión Digital Studio y responder la solicitud del usuario.
+            </p>
+          </section>
+
+          <section>
             <h2 className="font-display text-xl text-foreground">Vigencia</h2>
             <p className="mt-3">
               Esta política rige desde su publicación. Cualquier cambio se informará en esta misma
