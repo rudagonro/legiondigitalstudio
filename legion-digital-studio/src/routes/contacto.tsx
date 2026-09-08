@@ -19,9 +19,9 @@ export const Route = createFileRoute("/contacto")({
         content:
           "Cotiza tu página web: WhatsApp +57 323 568 8278 o formulario con el detalle de tu proyecto.",
       },
-      { property: "og:url", content: `${site.url}/contacto` },
+      { property: "og:url", content: `${site.url}/contacto/` },
     ],
-    links: [{ rel: "canonical", href: `${site.url}/contacto` }],
+    links: [{ rel: "canonical", href: `${site.url}/contacto/` }],
   }),
   component: Contact,
 });

@@ -22,9 +22,9 @@ export const Route = createFileRoute("/servicios/$slug")({
         { name: "description", content: s.metaDescription },
         { property: "og:title", content: s.metaTitle },
         { property: "og:description", content: s.metaDescription },
-        { property: "og:url", content: `${site.url}/servicios/${params.slug}` },
+        { property: "og:url", content: `${site.url}/servicios/${params.slug}/` },
       ],
-      links: [{ rel: "canonical", href: `${site.url}/servicios/${params.slug}` }],
+      links: [{ rel: "canonical", href: `${site.url}/servicios/${params.slug}/` }],
       scripts: [
         {
           type: "application/ld+json",
@@ -35,6 +35,23 @@ export const Route = createFileRoute("/servicios/$slug")({
             description: s.metaDescription,
             areaServed: "Colombia",
             provider: { "@type": "Organization", name: "Legión Digital Studio" },
+          }),
+        },
+        {
+          type: "application/ld+json",
+          children: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              { "@type": "ListItem", position: 1, name: "Inicio", item: "/" },
+              { "@type": "ListItem", position: 2, name: "Servicios", item: "/servicios/" },
+              {
+                "@type": "ListItem",
+                position: 3,
+                name: s.title,
+                item: `/servicios/${params.slug}/`,
+              },
+            ],
           }),
         },
       ],
@@ -71,7 +88,7 @@ function ServiceDetail() {
               {others.map((o) => (
                 <li key={o.slug}>
                   <Link
-                    to="/servicios/$slug"
+                    to="/servicios/$slug/"
                     params={{ slug: o.slug }}
                     className="group flex items-start justify-between gap-3"
                   >

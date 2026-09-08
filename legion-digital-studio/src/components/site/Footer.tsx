@@ -54,7 +54,7 @@ export function Footer() {
             {services.map((s) => (
               <li key={s.slug}>
                 <Link
-                  to="/servicios/$slug"
+                  to="/servicios/$slug/"
                   params={{ slug: s.slug }}
                   className="transition-colors hover:text-foreground"
                 >
@@ -69,27 +69,27 @@ export function Footer() {
           <p className="eyebrow">Estudio</p>
           <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
             <li>
-              <Link to="/precios" className="transition-colors hover:text-foreground">
+              <Link to="/precios/" className="transition-colors hover:text-foreground">
                 Precios
               </Link>
             </li>
             <li>
-              <Link to="/trabajo" className="transition-colors hover:text-foreground">
+              <Link to="/trabajo/" className="transition-colors hover:text-foreground">
                 Trabajo real
               </Link>
             </li>
             <li>
-              <Link to="/nosotros" className="transition-colors hover:text-foreground">
+              <Link to="/nosotros/" className="transition-colors hover:text-foreground">
                 Nosotros
               </Link>
             </li>
             <li>
-              <Link to="/contacto" className="transition-colors hover:text-foreground">
+              <Link to="/contacto/" className="transition-colors hover:text-foreground">
                 Contacto
               </Link>
             </li>
             <li>
-              <Link to="/privacidad" className="transition-colors hover:text-foreground">
+              <Link to="/privacidad/" className="transition-colors hover:text-foreground">
                 Tratamiento de datos
               </Link>
             </li>

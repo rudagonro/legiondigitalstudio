@@ -20,9 +20,9 @@ export const Route = createFileRoute("/nosotros")({
         content:
           "Código propio en vez de plantillas, trato directo y precios visibles. Así trabaja Legión Digital Studio.",
       },
-      { property: "og:url", content: `${site.url}/nosotros` },
+      { property: "og:url", content: `${site.url}/nosotros/` },
     ],
-    links: [{ rel: "canonical", href: `${site.url}/nosotros` }],
+    links: [{ rel: "canonical", href: `${site.url}/nosotros/` }],
   }),
   component: About,
 });

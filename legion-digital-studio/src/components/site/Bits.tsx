@@ -162,7 +162,7 @@ export function CtaBand({
             >
               <MessageCircle className="h-4 w-4" /> Escribir por WhatsApp
             </a>
-            <Link to="/contacto" className="btn-base btn-outline">
+            <Link to="/contacto/" className="btn-base btn-outline">
               Enviar formulario
             </Link>
           </div>

@@ -1,7 +1,7 @@
 export const site = {
   name: "Legión Digital Studio",
   url: "https://legiondigitalstudio.com",
-  ogImage: "https://legiondigitalstudio.com/og-image.png",
+  ogImage: "https://legiondigitalstudio.com/og-cover.jpg",
   city: "Bogotá, Colombia",
   email: "legionario@legiondigitalstudio.com",
   whatsappNumber: "+57 323 568 8278",

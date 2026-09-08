@@ -21,9 +21,9 @@ export const Route = createFileRoute("/precios")({
           "Landing desde $500.000, sitio autoadministrable desde $800.000 y tienda en línea desde $2.000.000. Sin letra menuda.",
       },
 
-      { property: "og:url", content: `${site.url}/precios` },
+      { property: "og:url", content: `${site.url}/precios/` },
     ],
-    links: [{ rel: "canonical", href: `${site.url}/precios` }],
+    links: [{ rel: "canonical", href: `${site.url}/precios/` }],
   }),
   component: Pricing,
 });

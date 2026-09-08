@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, Gauge, MessageCircle, ShieldCheck, Sparkles } from "lucide-react";
-import heroAsset from "@/assets/hero-team.jpg";
+import heroImg from "@/assets/hero-team.jpg";
 import stepDesarrollo from "@/assets/step-desarrollo.jpg";
 import stepDescubrimiento from "@/assets/step-descubrimiento.jpg";
 import stepDiseno from "@/assets/step-diseno.jpg";
@@ -27,9 +27,11 @@ export const Route = createFileRoute("/")({
         content:
           "Sitios web y software a la medida en toda Colombia: rápidos, sin plantillas, con SEO técnico. Precios visibles y trato directo.",
       },
-      { property: "og:url", content: site.url },
+      { property: "og:url", content: `${site.url}/` },
+      { property: "og:image", content: site.ogImage },
+      { name: "twitter:image", content: site.ogImage },
     ],
-    links: [{ rel: "canonical", href: site.url }],
+    links: [{ rel: "canonical", href: `${site.url}/` }],
   }),
   component: Home,
 });
@@ -90,10 +92,11 @@ function Home() {
       {/* Hero */}
       <section className="relative overflow-hidden border-b border-border">
         <img
-          src={heroAsset}
+          src={heroImg}
           alt="Equipo de Legión Digital Studio trabajando en un sitio web"
-          width={1600}
-          height={1067}
+          width={1400}
+          height={593}
+          fetchPriority="high"
           className="absolute inset-0 h-full w-full object-cover"
         />
         <div
@@ -137,7 +140,7 @@ function Home() {
               >
                 <MessageCircle className="h-4 w-4" /> Cotizar por WhatsApp
               </a>
-              <Link to="/precios" className="btn-base btn-outline w-full sm:w-auto">
+              <Link to="/precios/" className="btn-base btn-outline w-full sm:w-auto">
                 Ver precios <ArrowRight className="h-4 w-4" />
               </Link>
             </div>
@@ -191,10 +194,10 @@ function Home() {
           intro="Cada servicio tiene su propia página con detalle, alcance y precios de referencia."
         />
         <div className="mt-8 grid gap-4 sm:gap-6 md:mt-12 md:grid-cols-2">
-          {services.map((s) => (
+          {services.slice(0, 4).map((s) => (
             <Link
               key={s.slug}
-              to="/servicios/$slug"
+              to="/servicios/$slug/"
               params={{ slug: s.slug }}
               className="plate plate-hover group flex flex-col p-5 sm:p-7"
             >
@@ -210,6 +213,9 @@ function Home() {
             </Link>
           ))}
         </div>
+        <Link to="/servicios/" className="btn-base btn-outline mt-6">
+          Ver todos los servicios <ArrowRight className="h-4 w-4" />
+        </Link>
       </Section>
 
       {/* Pricing */}
@@ -265,10 +271,10 @@ function Home() {
           intro="Proyectos con panel de administración, pagos en línea, acceso para clientes y WhatsApp integrado. Cada caso tiene su propia página con el reto, lo que hicimos y el resultado."
         />
         <div className="mt-8 grid gap-4 sm:grid-cols-2 sm:gap-6 md:mt-12 lg:grid-cols-3">
-          {cases.map((c) => (
+          {cases.slice(0, 3).map((c) => (
             <Link
               key={c.slug}
-              to="/trabajo/$slug"
+              to="/trabajo/$slug/"
               params={{ slug: c.slug }}
               className="plate plate-hover group flex flex-col p-5 sm:p-7"
             >
@@ -285,13 +291,16 @@ function Home() {
             </Link>
           ))}
         </div>
+        <Link to="/trabajo/" className="btn-base btn-outline mt-6">
+          Ver todos los proyectos <ArrowRight className="h-4 w-4" />
+        </Link>
       </Section>
 
       {/* FAQ */}
       <Section className="rule-top">
         <SectionHeading eyebrow="Preguntas frecuentes" title="Lo esencial antes de comenzar." />
         <div className="mt-10 max-w-3xl divide-y divide-border">
-          {faqs.map((f) => (
+          {faqs.slice(0, 4).map((f) => (
             <details key={f.q} className="group py-5">
               <summary className="cursor-pointer list-none font-display text-base font-bold marker:hidden">
                 <span className="text-primary">+</span> {f.q}
@@ -300,6 +309,9 @@ function Home() {
             </details>
           ))}
         </div>
+        <Link to="/precios/" className="btn-base btn-outline mt-6">
+          Ver todas las preguntas <ArrowRight className="h-4 w-4" />
+        </Link>
       </Section>
 
       <CtaBand />

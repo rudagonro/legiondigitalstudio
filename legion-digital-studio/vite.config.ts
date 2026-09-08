@@ -15,9 +15,5 @@ export default defineConfig({
       enabled: true,
       crawlLinks: true,
     },
-    sitemap: {
-      enabled: true,
-      host: "https://legiondigitalstudio.com",
-    },
   },
 });

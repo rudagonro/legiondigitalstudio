@@ -21,9 +21,9 @@ export const Route = createFileRoute("/servicios/")({
         content:
           "Páginas web a la medida, tiendas en línea, landing pages y SEO técnico para negocios colombianos.",
       },
-      { property: "og:url", content: `${site.url}/servicios` },
+      { property: "og:url", content: `${site.url}/servicios/` },
     ],
-    links: [{ rel: "canonical", href: `${site.url}/servicios` }],
+    links: [{ rel: "canonical", href: `${site.url}/servicios/` }],
   }),
   component: ServicesIndex,
 });
@@ -54,7 +54,7 @@ function ServicesIndex() {
                 ))}
               </ul>
               <Link
-                to="/servicios/$slug"
+                to="/servicios/$slug/"
                 params={{ slug: s.slug }}
                 className="btn-base btn-outline mt-7 self-start"
               >

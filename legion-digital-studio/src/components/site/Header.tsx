@@ -1,16 +1,16 @@
 import { Link } from "@tanstack/react-router";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
-import logoAsset from "@/assets/legion-logo.png";
+import logoImg from "@/assets/legion-logo.png";
 import { site } from "@/lib/site-data";
 
 const nav = [
   { to: "/", label: "Inicio" },
-  { to: "/servicios", label: "Servicios" },
-  { to: "/precios", label: "Precios" },
-  { to: "/trabajo", label: "Trabajo" },
-  { to: "/nosotros", label: "Nosotros" },
-  { to: "/contacto", label: "Contacto" },
+  { to: "/servicios/", label: "Servicios" },
+  { to: "/precios/", label: "Precios" },
+  { to: "/trabajo/", label: "Trabajo" },
+  { to: "/nosotros/", label: "Nosotros" },
+  { to: "/contacto/", label: "Contacto" },
 ] as const;
 
 export function Header() {
@@ -21,7 +21,7 @@ export function Header() {
       <div className="container-page grid h-14 grid-cols-[minmax(0,1fr)_auto] items-center gap-3 md:h-16 md:flex md:justify-between md:gap-6">
         <Link to="/" className="flex min-w-0 items-center gap-2" onClick={() => setOpen(false)}>
           <img
-            src={logoAsset}
+            src={logoImg}
             alt="Legión Digital Studio"
             width={36}
             height={36}

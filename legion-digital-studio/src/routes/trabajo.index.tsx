@@ -17,9 +17,9 @@ export const Route = createFileRoute("/trabajo/")({
         property: "og:description",
         content: "Casos reales con el reto, el trabajo y el resultado de cada proyecto.",
       },
-      { property: "og:url", content: `${site.url}/trabajo` },
+      { property: "og:url", content: `${site.url}/trabajo/` },
     ],
-    links: [{ rel: "canonical", href: `${site.url}/trabajo` }],
+    links: [{ rel: "canonical", href: `${site.url}/trabajo/` }],
   }),
   component: WorkIndex,
 });
@@ -56,7 +56,7 @@ function WorkIndex() {
               </ul>
               <div className="mt-7 flex flex-wrap gap-3">
                 <Link
-                  to="/trabajo/$slug"
+                  to="/trabajo/$slug/"
                   params={{ slug: c.slug }}
                   className="btn-base btn-primary"
                 >

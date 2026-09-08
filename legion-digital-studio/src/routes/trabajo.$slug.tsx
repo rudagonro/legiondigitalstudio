@@ -21,9 +21,28 @@ export const Route = createFileRoute("/trabajo/$slug")({
         { property: "og:title", content: c.metaTitle },
         { property: "og:description", content: c.metaDescription },
         { property: "og:type", content: "article" },
-        { property: "og:url", content: `${site.url}/trabajo/${params.slug}` },
+        { property: "og:url", content: `${site.url}/trabajo/${params.slug}/` },
       ],
-      links: [{ rel: "canonical", href: `${site.url}/trabajo/${params.slug}` }],
+      links: [{ rel: "canonical", href: `${site.url}/trabajo/${params.slug}/` }],
+      scripts: [
+        {
+          type: "application/ld+json",
+          children: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              { "@type": "ListItem", position: 1, name: "Inicio", item: "/" },
+              { "@type": "ListItem", position: 2, name: "Trabajo", item: "/trabajo/" },
+              {
+                "@type": "ListItem",
+                position: 3,
+                name: c.client,
+                item: `/trabajo/${params.slug}/`,
+              },
+            ],
+          }),
+        },
+      ],
     };
   },
   component: CaseDetail,
@@ -90,7 +109,7 @@ function CaseDetail() {
               {others.map((o) => (
                 <li key={o.slug}>
                   <Link
-                    to="/trabajo/$slug"
+                    to="/trabajo/$slug/"
                     params={{ slug: o.slug }}
                     className="group flex items-start justify-between gap-3"
                   >
@@ -103,7 +122,7 @@ function CaseDetail() {
                 </li>
               ))}
             </ul>
-            <Link to="/trabajo" className="btn-base btn-outline mt-7 w-full">
+            <Link to="/trabajo/" className="btn-base btn-outline mt-7 w-full">
               Ver todo el trabajo
             </Link>
           </aside>
