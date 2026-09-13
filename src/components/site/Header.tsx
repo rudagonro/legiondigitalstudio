@@ -40,8 +40,13 @@ export function Header() {
             height={36}
             className="h-8 w-8 shrink-0 object-contain md:h-9 md:w-9"
           />
-          <span className="truncate font-display text-[0.8rem] font-extrabold md:whitespace-nowrap md:text-sm">
-            Legión <span className="text-primary">Digital Studio</span>
+          <span className="flex min-w-0 flex-col justify-center leading-none">
+            <span className="truncate font-display text-[0.8rem] font-extrabold md:whitespace-nowrap md:text-sm">
+              Legión <span className="text-primary">Digital Studio</span>
+            </span>
+            <span className="mt-1 truncate font-mono text-[0.42rem] font-semibold uppercase tracking-[0.22em] text-muted-foreground md:text-[0.48rem]">
+              Ideas · Negocios · Resultados
+            </span>
           </span>
         </Link>
 
