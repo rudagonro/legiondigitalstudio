@@ -93,6 +93,11 @@ export function Footer() {
                 Tratamiento de datos
               </Link>
             </li>
+            <li>
+              <Link to="/terminos/" className="transition-colors hover:text-foreground">
+                Términos y condiciones
+              </Link>
+            </li>
           </ul>
         </div>
       </div>

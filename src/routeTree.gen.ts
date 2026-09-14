@@ -14,6 +14,7 @@ import { Route as ContactoRouteImport } from './routes/contacto'
 import { Route as NosotrosRouteImport } from './routes/nosotros'
 import { Route as PreciosRouteImport } from './routes/precios'
 import { Route as PrivacidadRouteImport } from './routes/privacidad'
+import { Route as TerminosRouteImport } from './routes/terminos'
 import { Route as ServiciosIndexRouteImport } from './routes/servicios.index'
 import { Route as ServiciosSlugRouteImport } from './routes/servicios.$slug'
 import { Route as TrabajoIndexRouteImport } from './routes/trabajo.index'
@@ -44,6 +45,11 @@ const PrivacidadRoute = PrivacidadRouteImport.update({
   path: '/privacidad',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TerminosRoute = TerminosRouteImport.update({
+  id: '/terminos',
+  path: '/terminos',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ServiciosIndexRoute = ServiciosIndexRouteImport.update({
   id: '/servicios/',
   path: '/servicios/',
@@ -71,6 +77,7 @@ export interface FileRoutesByFullPath {
   '/nosotros': typeof NosotrosRoute
   '/precios': typeof PreciosRoute
   '/privacidad': typeof PrivacidadRoute
+  '/terminos': typeof TerminosRoute
   '/servicios/$slug': typeof ServiciosSlugRoute
   '/trabajo/$slug': typeof TrabajoSlugRoute
   '/servicios/': typeof ServiciosIndexRoute
@@ -82,6 +89,7 @@ export interface FileRoutesByTo {
   '/nosotros': typeof NosotrosRoute
   '/precios': typeof PreciosRoute
   '/privacidad': typeof PrivacidadRoute
+  '/terminos': typeof TerminosRoute
   '/servicios/$slug': typeof ServiciosSlugRoute
   '/trabajo/$slug': typeof TrabajoSlugRoute
   '/servicios': typeof ServiciosIndexRoute
@@ -94,6 +102,7 @@ export interface FileRoutesById {
   '/nosotros': typeof NosotrosRoute
   '/precios': typeof PreciosRoute
   '/privacidad': typeof PrivacidadRoute
+  '/terminos': typeof TerminosRoute
   '/servicios/$slug': typeof ServiciosSlugRoute
   '/trabajo/$slug': typeof TrabajoSlugRoute
   '/servicios/': typeof ServiciosIndexRoute
@@ -107,6 +116,7 @@ export interface FileRouteTypes {
     | '/nosotros'
     | '/precios'
     | '/privacidad'
+    | '/terminos'
     | '/servicios/$slug'
     | '/trabajo/$slug'
     | '/servicios/'
@@ -118,6 +128,7 @@ export interface FileRouteTypes {
     | '/nosotros'
     | '/precios'
     | '/privacidad'
+    | '/terminos'
     | '/servicios/$slug'
     | '/trabajo/$slug'
     | '/servicios'
@@ -129,6 +140,7 @@ export interface FileRouteTypes {
     | '/nosotros'
     | '/precios'
     | '/privacidad'
+    | '/terminos'
     | '/servicios/$slug'
     | '/trabajo/$slug'
     | '/servicios/'
@@ -141,6 +153,7 @@ export interface RootRouteChildren {
   NosotrosRoute: typeof NosotrosRoute
   PreciosRoute: typeof PreciosRoute
   PrivacidadRoute: typeof PrivacidadRoute
+  TerminosRoute: typeof TerminosRoute
   ServiciosSlugRoute: typeof ServiciosSlugRoute
   TrabajoSlugRoute: typeof TrabajoSlugRoute
   ServiciosIndexRoute: typeof ServiciosIndexRoute
@@ -184,6 +197,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PrivacidadRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/terminos': {
+      id: '/terminos'
+      path: '/terminos'
+      fullPath: '/terminos'
+      preLoaderRoute: typeof TerminosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/servicios/': {
       id: '/servicios/'
       path: '/servicios'
@@ -221,6 +241,7 @@ const rootRouteChildren: RootRouteChildren = {
   NosotrosRoute: NosotrosRoute,
   PreciosRoute: PreciosRoute,
   PrivacidadRoute: PrivacidadRoute,
+  TerminosRoute: TerminosRoute,
   ServiciosSlugRoute: ServiciosSlugRoute,
   TrabajoSlugRoute: TrabajoSlugRoute,
   ServiciosIndexRoute: ServiciosIndexRoute,
