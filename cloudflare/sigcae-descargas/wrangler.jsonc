@@ -1,0 +1,68 @@
+{
+  "name": "sigcae-descargas",
+  "main": "src/worker.ts",
+  "compatibility_date": "2026-09-21",
+  "workers_dev": false,
+  "preview_urls": false,
+  "vars": {
+    "TEAM_DOMAIN": "https://rudagonro.cloudflareaccess.com",
+    "POLICY_AUD": "cd3cd5efb7506da2b2392a709649c53124ed18c6fbee7cf0230bc1cc6362567f",
+    "ADMIN_EMAIL": "rudagonro@gmail.com",
+    "PUBLIC_ORIGIN": "https://legiondigitalstudio.com"
+  },
+  "r2_buckets": [
+    {
+      "binding": "FILES",
+      "bucket_name": "sigcae-instaladores-privados"
+    }
+  ],
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "sigcae-descargas",
+      "database_id": "01894c6c-9c77-4d13-9edb-4ad324d460ac",
+      "migrations_dir": "migrations"
+    }
+  ],
+  "observability": {
+    "enabled": true,
+    "logs": {
+      "enabled": true,
+      "invocation_logs": false
+    },
+    "traces": {
+      "enabled": true,
+      "head_sampling_rate": 0.01
+    }
+  },
+  "rules": [
+    {
+      "type": "Text",
+      "globs": [
+        "**/*.html",
+        "**/*.css",
+        "**/panel.js"
+      ],
+      "fallthrough": true
+    }
+  ],
+  "account_id": "46055cf842945d117960d870d09a42c3",
+  "routes": [
+    {
+      "pattern": "legiondigitalstudio.com/admin",
+      "zone_name": "legiondigitalstudio.com"
+    },
+    {
+      "pattern": "legiondigitalstudio.com/admin/*",
+      "zone_name": "legiondigitalstudio.com"
+    },
+    {
+      "pattern": "legiondigitalstudio.com/sigcae-descarga",
+      "zone_name": "legiondigitalstudio.com"
+    },
+    {
+      "pattern": "legiondigitalstudio.com/sigcae-descarga/*",
+      "zone_name": "legiondigitalstudio.com"
+    }
+  ]
+}
