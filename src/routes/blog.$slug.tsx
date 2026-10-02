@@ -1,4 +1,4 @@
-import { createFileRoute, Link, notFound } from "@tanstack/react-router";
+import { createFileRoute, Link, notFound, redirect } from "@tanstack/react-router";
 import { ArrowRight, Clock3, MessageCircle } from "lucide-react";
 import { CtaBand, Section } from "@/components/site/Bits";
 import { blogPosts, formatBlogDate } from "@/lib/blog-data";
@@ -6,6 +6,13 @@ import { site } from "@/lib/site-data";
 
 export const Route = createFileRoute("/blog/$slug")({
   loader: ({ params }) => {
+    if (params.slug === "landing-page-o-sitio-web") {
+      throw redirect({
+        to: "/blog/$slug/",
+        params: { slug: "que-tipo-de-pagina-web-necesita-mi-negocio" },
+        statusCode: 301,
+      });
+    }
     const post = blogPosts.find((entry) => entry.slug === params.slug);
     if (!post) throw notFound();
     return { post };
@@ -62,6 +69,18 @@ export const Route = createFileRoute("/blog/$slug")({
             ],
           }),
         },
+        {
+          type: "application/ld+json",
+          children: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: post.faq.map((item) => ({
+              "@type": "Question",
+              name: item.question,
+              acceptedAnswer: { "@type": "Answer", text: item.answer },
+            })),
+          }),
+        },
       ],
     };
   },
@@ -70,7 +89,16 @@ export const Route = createFileRoute("/blog/$slug")({
 
 function BlogPostPage() {
   const { post } = Route.useLoaderData();
-  const related = blogPosts.filter((entry) => entry.slug !== post.slug).slice(0, 3);
+  const related = blogPosts
+    .filter((entry) => entry.slug !== post.slug)
+    .sort((a, b) => {
+      const aScore =
+        Number(a.relatedService === post.relatedService) + Number(a.category === post.category);
+      const bScore =
+        Number(b.relatedService === post.relatedService) + Number(b.category === post.category);
+      return bScore - aScore;
+    })
+    .slice(0, 3);
 
   return (
     <>
@@ -110,6 +138,13 @@ function BlogPostPage() {
         <Section>
           <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_18rem]">
             <div className="max-w-3xl space-y-12">
+              <section className="plate border-primary/20 bg-primary/5 p-6 sm:p-8">
+                <p className="eyebrow">Respuesta rápida</p>
+                <p className="mt-3 text-base font-medium leading-8 text-foreground sm:text-lg">
+                  {post.answer}
+                </p>
+              </section>
+
               {post.sections.map((section) => (
                 <section key={section.heading}>
                   <h2 className="text-2xl sm:text-3xl">{section.heading}</h2>
