@@ -7,6 +7,7 @@ import stepDiseno from "@/assets/step-diseno.jpg";
 import stepLanzamiento from "@/assets/step-lanzamiento.jpg";
 
 import { CtaBand, PlansGrid, Section, SectionHeading } from "@/components/site/Bits";
+import { blogPosts } from "@/lib/blog-data";
 import { cases, faqs, services, site } from "@/lib/site-data";
 
 export const Route = createFileRoute("/")({
@@ -293,6 +294,38 @@ function Home() {
         </div>
         <Link to="/trabajo/" className="btn-base btn-outline mt-6">
           Ver todos los proyectos <ArrowRight className="h-4 w-4" />
+        </Link>
+      </Section>
+
+      {/* Blog */}
+      <Section className="rule-top">
+        <SectionHeading
+          eyebrow="Guías para tu negocio"
+          title="Decisiones digitales, explicadas sin enredos."
+          intro="Contenido práctico para entender precios, posicionamiento y qué necesita una página para convertirse en una herramienta comercial."
+        />
+        <div className="mt-8 grid gap-4 sm:gap-6 md:mt-12 lg:grid-cols-3">
+          {blogPosts.slice(0, 3).map((post) => (
+            <Link
+              key={post.slug}
+              to="/blog/$slug/"
+              params={{ slug: post.slug }}
+              className="plate plate-hover group flex flex-col p-5 sm:p-7"
+            >
+              <span className="font-mono text-[0.62rem] uppercase tracking-[0.16em] text-primary">
+                {post.category} · {post.readingMinutes} min
+              </span>
+              <h3 className="mt-2 font-display text-lg leading-snug">{post.title}</h3>
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{post.excerpt}</p>
+              <span className="mt-5 inline-flex items-center gap-2 font-display text-sm font-bold text-primary">
+                Leer la guía
+                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+              </span>
+            </Link>
+          ))}
+        </div>
+        <Link to="/blog/" className="btn-base btn-outline mt-6">
+          Ver todas las guías <ArrowRight className="h-4 w-4" />
         </Link>
       </Section>
 

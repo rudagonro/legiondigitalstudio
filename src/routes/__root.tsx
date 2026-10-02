@@ -120,6 +120,17 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           priceRange: "$500.000 - $3.000.000 COP",
         }),
       },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          name: site.name,
+          alternateName: "Legión Digital",
+          url: site.url,
+          inLanguage: "es-CO",
+        }),
+      },
     ],
   }),
   shellComponent: RootShell,

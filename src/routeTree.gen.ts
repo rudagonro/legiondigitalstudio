@@ -15,6 +15,8 @@ import { Route as NosotrosRouteImport } from './routes/nosotros'
 import { Route as PreciosRouteImport } from './routes/precios'
 import { Route as PrivacidadRouteImport } from './routes/privacidad'
 import { Route as TerminosRouteImport } from './routes/terminos'
+import { Route as BlogIndexRouteImport } from './routes/blog.index'
+import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
 import { Route as ServiciosIndexRouteImport } from './routes/servicios.index'
 import { Route as ServiciosSlugRouteImport } from './routes/servicios.$slug'
 import { Route as TrabajoIndexRouteImport } from './routes/trabajo.index'
@@ -50,6 +52,16 @@ const TerminosRoute = TerminosRouteImport.update({
   path: '/terminos',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BlogIndexRoute = BlogIndexRouteImport.update({
+  id: '/blog/',
+  path: '/blog/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BlogSlugRoute = BlogSlugRouteImport.update({
+  id: '/blog/$slug',
+  path: '/blog/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ServiciosIndexRoute = ServiciosIndexRouteImport.update({
   id: '/servicios/',
   path: '/servicios/',
@@ -78,8 +90,10 @@ export interface FileRoutesByFullPath {
   '/precios': typeof PreciosRoute
   '/privacidad': typeof PrivacidadRoute
   '/terminos': typeof TerminosRoute
+  '/blog/$slug': typeof BlogSlugRoute
   '/servicios/$slug': typeof ServiciosSlugRoute
   '/trabajo/$slug': typeof TrabajoSlugRoute
+  '/blog/': typeof BlogIndexRoute
   '/servicios/': typeof ServiciosIndexRoute
   '/trabajo/': typeof TrabajoIndexRoute
 }
@@ -90,8 +104,10 @@ export interface FileRoutesByTo {
   '/precios': typeof PreciosRoute
   '/privacidad': typeof PrivacidadRoute
   '/terminos': typeof TerminosRoute
+  '/blog/$slug': typeof BlogSlugRoute
   '/servicios/$slug': typeof ServiciosSlugRoute
   '/trabajo/$slug': typeof TrabajoSlugRoute
+  '/blog': typeof BlogIndexRoute
   '/servicios': typeof ServiciosIndexRoute
   '/trabajo': typeof TrabajoIndexRoute
 }
@@ -103,8 +119,10 @@ export interface FileRoutesById {
   '/precios': typeof PreciosRoute
   '/privacidad': typeof PrivacidadRoute
   '/terminos': typeof TerminosRoute
+  '/blog/$slug': typeof BlogSlugRoute
   '/servicios/$slug': typeof ServiciosSlugRoute
   '/trabajo/$slug': typeof TrabajoSlugRoute
+  '/blog/': typeof BlogIndexRoute
   '/servicios/': typeof ServiciosIndexRoute
   '/trabajo/': typeof TrabajoIndexRoute
 }
@@ -117,8 +135,10 @@ export interface FileRouteTypes {
     | '/precios'
     | '/privacidad'
     | '/terminos'
+    | '/blog/$slug'
     | '/servicios/$slug'
     | '/trabajo/$slug'
+    | '/blog/'
     | '/servicios/'
     | '/trabajo/'
   fileRoutesByTo: FileRoutesByTo
@@ -129,8 +149,10 @@ export interface FileRouteTypes {
     | '/precios'
     | '/privacidad'
     | '/terminos'
+    | '/blog/$slug'
     | '/servicios/$slug'
     | '/trabajo/$slug'
+    | '/blog'
     | '/servicios'
     | '/trabajo'
   id:
@@ -141,8 +163,10 @@ export interface FileRouteTypes {
     | '/precios'
     | '/privacidad'
     | '/terminos'
+    | '/blog/$slug'
     | '/servicios/$slug'
     | '/trabajo/$slug'
+    | '/blog/'
     | '/servicios/'
     | '/trabajo/'
   fileRoutesById: FileRoutesById
@@ -154,8 +178,10 @@ export interface RootRouteChildren {
   PreciosRoute: typeof PreciosRoute
   PrivacidadRoute: typeof PrivacidadRoute
   TerminosRoute: typeof TerminosRoute
+  BlogSlugRoute: typeof BlogSlugRoute
   ServiciosSlugRoute: typeof ServiciosSlugRoute
   TrabajoSlugRoute: typeof TrabajoSlugRoute
+  BlogIndexRoute: typeof BlogIndexRoute
   ServiciosIndexRoute: typeof ServiciosIndexRoute
   TrabajoIndexRoute: typeof TrabajoIndexRoute
 }
@@ -204,6 +230,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TerminosRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/blog/': {
+      id: '/blog/'
+      path: '/blog'
+      fullPath: '/blog/'
+      preLoaderRoute: typeof BlogIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/blog/$slug': {
+      id: '/blog/$slug'
+      path: '/blog/$slug'
+      fullPath: '/blog/$slug'
+      preLoaderRoute: typeof BlogSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/servicios/': {
       id: '/servicios/'
       path: '/servicios'
@@ -242,8 +282,10 @@ const rootRouteChildren: RootRouteChildren = {
   PreciosRoute: PreciosRoute,
   PrivacidadRoute: PrivacidadRoute,
   TerminosRoute: TerminosRoute,
+  BlogSlugRoute: BlogSlugRoute,
   ServiciosSlugRoute: ServiciosSlugRoute,
   TrabajoSlugRoute: TrabajoSlugRoute,
+  BlogIndexRoute: BlogIndexRoute,
   ServiciosIndexRoute: ServiciosIndexRoute,
   TrabajoIndexRoute: TrabajoIndexRoute,
 }
