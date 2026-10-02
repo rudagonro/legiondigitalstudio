@@ -123,8 +123,8 @@
 @utility container-page {
   width: 100%;
   margin-inline: auto;
-  max-width: 76rem;
-  padding-inline: 1.25rem;
+  max-width: 96rem;
+  padding-inline: clamp(1.25rem, 2vw, 2.5rem);
 }
 
 @utility eyebrow {
