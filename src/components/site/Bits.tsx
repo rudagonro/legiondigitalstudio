@@ -55,6 +55,19 @@ export function PageHero({
           <p className="eyebrow">{eyebrow}</p>
           <h1 className="mt-3 text-3xl sm:text-4xl md:text-5xl">{title}</h1>
           <p className="mt-4 text-base leading-relaxed text-muted-foreground md:text-lg">{intro}</p>
+          <div className="mt-6 flex flex-wrap gap-3">
+            <a
+              href={site.whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-base btn-primary"
+            >
+              <MessageCircle className="h-4 w-4" /> Cotizar por WhatsApp
+            </a>
+            <Link to="/contacto/" className="btn-base btn-outline">
+              Enviar formulario
+            </Link>
+          </div>
         </div>
       </div>
     </section>

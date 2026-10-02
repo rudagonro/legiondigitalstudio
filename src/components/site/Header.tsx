@@ -70,9 +70,11 @@ export function Header() {
             href={site.whatsappUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-base btn-primary hidden whitespace-nowrap px-4 py-2 text-[0.8rem] sm:inline-flex md:hidden lg:inline-flex"
+            className="btn-base btn-primary inline-flex whitespace-nowrap px-3 py-2 text-[0.72rem] md:hidden lg:inline-flex lg:px-4 lg:text-[0.8rem]"
+            aria-label="Cotizar proyecto por WhatsApp"
           >
-            Cotizar por WhatsApp
+            <span className="sm:hidden">Cotizar</span>
+            <span className="hidden sm:inline">Cotizar por WhatsApp</span>
           </a>
           <button
             type="button"

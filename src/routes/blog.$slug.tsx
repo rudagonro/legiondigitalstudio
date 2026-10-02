@@ -1,5 +1,5 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { ArrowRight, Clock3 } from "lucide-react";
+import { ArrowRight, Clock3, MessageCircle } from "lucide-react";
 import { CtaBand, Section } from "@/components/site/Bits";
 import { blogPosts, formatBlogDate } from "@/lib/blog-data";
 import { site } from "@/lib/site-data";
@@ -90,6 +90,19 @@ function BlogPostPage() {
                   <Clock3 className="h-3.5 w-3.5" /> {post.readingMinutes} min de lectura
                 </span>
               </p>
+              <div className="mt-6 flex flex-wrap gap-3">
+                <a
+                  href={site.whatsappUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-base btn-primary"
+                >
+                  <MessageCircle className="h-4 w-4" /> Aplicarlo a mi negocio
+                </a>
+                <Link to="/contacto/" className="btn-base btn-outline">
+                  Enviar consulta
+                </Link>
+              </div>
             </div>
           </div>
         </header>
