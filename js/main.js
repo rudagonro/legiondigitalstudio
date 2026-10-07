@@ -49,6 +49,9 @@
     if (link.closest('.work-card')) {
       track('portfolio_click', { destination: link.href });
     }
+    if (link.matches('.brochure-link')) {
+      track('brochure_download', { destination: link.href });
+    }
   });
 
   document.querySelectorAll('.faq-list details').forEach((item) => {
