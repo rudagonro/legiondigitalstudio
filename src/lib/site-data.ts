@@ -9,9 +9,36 @@ export const site = {
     "https://wa.me/573235688278?text=Hola%20Legi%C3%B3n%2C%20quiero%20cotizar%20una%20p%C3%A1gina%20web",
 };
 
+// Enlace de WhatsApp con un mensaje que indica qué quiere cotizar la persona.
+// Así cada conversación llega con su origen (plan o guía) sin pedirlo después.
+export function whatsappLink(subject = "una página web") {
+  const text = `Hola Legión, quiero cotizar ${subject}.`;
+  return `https://wa.me/573235688278?text=${encodeURIComponent(text)}`;
+}
+
+export const projectTypes = [
+  "Landing / una página",
+  "Sitio completo autoadministrable",
+  "Tienda en línea",
+  "Software a la medida",
+  "SEO técnico",
+  "Otro",
+];
+
+export const budgetRanges = [
+  "Aún no lo tengo definido",
+  "Hasta $700.000",
+  "$800.000 – $1.500.000",
+  "$2.000.000 – $3.000.000",
+  "Más de $3.000.000",
+];
+
+export const timelines = ["Aún no lo sé", "Lo antes posible", "Este mes", "En uno a tres meses"];
+
 export type Plan = {
   slug: string;
   name: string;
+  formType: string;
   price: string;
   note: string;
   summary: string;
@@ -23,6 +50,7 @@ export const plans: Plan[] = [
   {
     slug: "landing",
     name: "Landing Page",
+    formType: "Landing / una página",
     price: "$500.000 – $700.000",
     note: "Pago único · entrega en 5 a 8 días",
 
@@ -41,6 +69,7 @@ export const plans: Plan[] = [
   {
     slug: "autoadministrable",
     name: "Sitio Autoadministrable",
+    formType: "Sitio completo autoadministrable",
     price: "$800.000 – $1.500.000",
     note: "Entrega en 2 a 3 semanas",
 
@@ -60,6 +89,7 @@ export const plans: Plan[] = [
   {
     slug: "cms-ecommerce",
     name: "Tienda en Línea",
+    formType: "Tienda en línea",
     price: "$2.000.000 – $3.000.000",
     note: "Entrega en 3 a 5 semanas",
 
@@ -77,34 +107,123 @@ export const plans: Plan[] = [
   },
 ];
 
+export type ServiceStep = { title: string; text: string };
+export type ServiceFaq = { question: string; answer: string };
+
 export type Service = {
   slug: string;
   title: string;
+  heading?: string;
   tagline: string;
   summary: string;
   bullets: string[];
   metaTitle: string;
   metaDescription: string;
+  // Secciones comerciales opcionales. Todo su contenido debe coincidir con los
+  // planes, los términos publicados y los casos reales.
+  process?: ServiceStep[];
+  conditions?: ServiceStep[];
+  caseSlugs?: string[];
+  guideSlugs?: string[];
+  faq?: ServiceFaq[];
 };
 
 export const services: Service[] = [
   {
     slug: "paginas-web",
     title: "Páginas web a la medida",
+    heading: "Diseño de páginas web a la medida en Colombia",
     tagline: "Sitios a la medida",
     summary:
-      "Diseñamos y programamos tu sitio desde cero, sin plantillas recicladas: rápido, claro y pensado para que el visitante te escriba. Atendemos toda Colombia.",
+      "Diseñamos y programamos tu sitio desde cero, sin plantillas recicladas: rápido, claro y pensado para que el visitante te escriba. Precios publicados desde $500.000 y atención en toda Colombia.",
     bullets: [
       "Diseño propio alineado a tu identidad visual",
-      "Código liviano: carga en menos de dos segundos",
+      "Código liviano, sin decenas de complementos que lo vuelvan lento",
       "Adaptado a celular, tableta y computador",
       "Textos ordenados para que el visitante entienda y actúe",
       "Botón de WhatsApp y formulario que sí llega a tu correo",
       "Trabajamos en todo el territorio nacional, de forma remota",
     ],
-    metaTitle: "Páginas web a la medida en Colombia | Legión Digital Studio",
+    metaTitle: "Diseño de páginas web en Colombia | Legión Digital Studio",
     metaDescription:
-      "Diseño y desarrollo de páginas web en toda Colombia desde $500.000. Sitios rápidos, sin plantillas, con SEO técnico y WhatsApp integrado.",
+      "Páginas web a la medida en toda Colombia: landing desde $500.000, sitio autoadministrable desde $800.000 y tienda desde $2.000.000. Alcance, tiempos y condiciones claras.",
+    process: [
+      {
+        title: "Conversación inicial",
+        text: "Nos cuentas qué vendes, a quién le hablas y qué quieres que haga el visitante. Si no tienes textos, los organizamos contigo.",
+      },
+      {
+        title: "Propuesta escrita",
+        text: "Recibes el alcance, el valor exacto, los tiempos, las rondas de revisión y la forma de pago antes de comenzar.",
+      },
+      {
+        title: "Diseño y desarrollo",
+        text: "Construimos el sitio y lo revisas por etapas. Cada entrega se prueba en celular, tableta y computador.",
+      },
+      {
+        title: "Publicación",
+        text: "Publicamos, conectamos el formulario y WhatsApp, configuramos títulos, descripciones y sitemap, y verificamos que todo funcione.",
+      },
+    ],
+    conditions: [
+      {
+        title: "Forma de pago",
+        text: "Normalmente 50 % para iniciar y 50 % contra entrega, antes de publicar o transferir los archivos finales.",
+      },
+      {
+        title: "Tiempos",
+        text: "Landing: 5 a 8 días. Sitio autoadministrable: 2 a 3 semanas. Tienda en línea: 3 a 5 semanas. El plazo corre desde el anticipo y la entrega de contenidos.",
+      },
+      {
+        title: "Ajustes",
+        text: "Las rondas de revisión quedan definidas en la propuesta. Nuevas páginas, funciones o cambios de dirección creativa se cotizan aparte.",
+      },
+      {
+        title: "Garantía técnica",
+        text: "Corregimos sin costo los errores técnicos reproducibles del desarrollo que se reporten dentro de los 30 días siguientes a la publicación.",
+      },
+      {
+        title: "Soporte posterior",
+        text: "El mantenimiento, las actualizaciones y el soporte continuo se contratan por separado cuando no están incluidos en la propuesta.",
+      },
+      {
+        title: "Renovaciones",
+        text: "Dominio, correo, alojamiento y otros servicios de terceros se renuevan con su proveedor. La propuesta indica cuáles aplican a tu proyecto.",
+      },
+    ],
+    caseSlugs: ["omg-serviteca", "xiomy-perfumeria", "abogada-mejia-rivera"],
+    guideSlugs: [
+      "cuanto-cuesta-pagina-web-colombia-2026",
+      "que-tipo-de-pagina-web-necesita-mi-negocio",
+      "cuanto-cuestan-dominio-hosting-mantenimiento-colombia",
+    ],
+    faq: [
+      {
+        question: "¿Cuánto cuesta una página web con Legión Digital Studio?",
+        answer:
+          "Una landing page cuesta entre $500.000 y $700.000, un sitio autoadministrable entre $800.000 y $1.500.000 y una tienda en línea entre $2.000.000 y $3.000.000. El valor exacto depende del número de páginas, del catálogo y de las funciones, y queda fijado por escrito antes de comenzar.",
+      },
+      {
+        question: "¿Qué necesito tener listo para empezar?",
+        answer:
+          "Tu logo, fotos de buena calidad, la lista de servicios o productos y los datos de contacto. Si no tienes textos, los redactamos contigo a partir de una conversación inicial.",
+      },
+      {
+        question: "¿Puedo editar la página yo mismo después?",
+        answer:
+          "Sí, en los planes Autoadministrable y Tienda en Línea: entregamos un panel de administración y una capacitación en video para que cambies textos, fotos y productos.",
+      },
+      {
+        question: "¿El dominio y el alojamiento están incluidos?",
+        answer:
+          "Te ayudamos a dejarlos configurados, pero sus renovaciones se pagan a cada proveedor. La propuesta indica qué servicios de terceros aplican y quién queda como titular.",
+      },
+      {
+        question: "¿Atienden fuera de Bogotá?",
+        answer:
+          "Sí. Trabajamos con negocios de toda Colombia de forma remota, coordinando por WhatsApp y videollamada.",
+      },
+    ],
   },
   {
     slug: "desarrollo-software",

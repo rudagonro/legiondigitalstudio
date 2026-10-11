@@ -1,10 +1,13 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Mail, MapPin, MessageCircle } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { PageHero, Section } from "@/components/site/Bits";
-import { site } from "@/lib/site-data";
+import { getCampaign, trackEvent } from "@/lib/analytics";
+import { budgetRanges, plans, projectTypes, site, timelines, whatsappLink } from "@/lib/site-data";
 
 export const Route = createFileRoute("/contacto")({
+  validateSearch: (search: Record<string, unknown>): { plan?: string } =>
+    typeof search["plan"] === "string" ? { plan: search["plan"] } : {},
   head: () => ({
     meta: [
       { title: "Contacto y cotización | Legión Digital Studio" },
@@ -26,27 +29,41 @@ export const Route = createFileRoute("/contacto")({
   component: Contact,
 });
 
-const projectTypes = [
-  "Landing / una página",
-  "Sitio completo autoadministrable",
-  "Tienda en línea",
-  "SEO técnico",
-  "Otro",
-];
-
 const WEB3FORMS_ACCESS_KEY = "5c7ed16a-d71b-4386-9b5d-6fdbffbe16a8";
 type SubmitStatus = "idle" | "sending" | "success" | "error";
 
+const fieldClass =
+  "w-full rounded-md border border-input bg-background px-3 py-2.5 text-sm outline-none focus:border-primary";
+
 function Contact() {
+  const { plan: planSlug } = Route.useSearch();
+  // La página se prerenderiza sin plan; se aplica tras montar para no
+  // desajustar la hidratación cuando la URL trae ?plan=.
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+  const selectedPlan = mounted ? plans.find((p) => p.slug === planSlug) : undefined;
+  const initialType = selectedPlan?.formType ?? projectTypes[0]!;
+
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [type, setType] = useState(projectTypes[0]);
+  const [phone, setPhone] = useState("");
+  const [type, setType] = useState(initialType);
+  const [budget, setBudget] = useState(budgetRanges[0]!);
+  const [timeline, setTimeline] = useState(timelines[0]!);
   const [detail, setDetail] = useState("");
+  const formStarted = useRef(false);
+  useEffect(() => setType(initialType), [initialType]);
   const [consent, setConsent] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<SubmitStatus>("idle");
   const [submitMessage, setSubmitMessage] = useState("");
 
   const ready = name.trim() !== "" && email.trim() !== "" && detail.trim() !== "" && consent;
+
+  function markStarted() {
+    if (formStarted.current) return;
+    formStarted.current = true;
+    trackEvent("form_start", { form_name: "cotizacion", plan: selectedPlan?.slug });
+  }
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -66,7 +83,13 @@ function Contact() {
           replyto: email.trim(),
           Nombre: name.trim(),
           "Correo electrónico": email.trim(),
+          "WhatsApp o teléfono": phone.trim() || "No indicado",
           "Tipo de proyecto": type,
+          "Presupuesto estimado": budget,
+          "Fecha esperada": timeline,
+          "Plan consultado": selectedPlan?.name ?? "Ninguno",
+          "Página de origen": document.referrer || "Directo",
+          Campaña: getCampaign() || "Ninguna",
           Mensaje: detail.trim(),
           botcheck: "",
         }),
@@ -77,14 +100,25 @@ function Contact() {
         throw new Error(result.message || "No fue posible enviar la solicitud.");
       }
 
+      // Un envío es una solicitud recibida, no una venta: se califica después.
+      trackEvent("generate_lead", {
+        form_name: "cotizacion",
+        project_type: type,
+        budget_range: budget,
+        plan: selectedPlan?.slug,
+      });
       setSubmitStatus("success");
       setSubmitMessage("¡Mensaje enviado! Te responderemos muy pronto.");
       setName("");
       setEmail("");
-      setType(projectTypes[0]);
+      setPhone("");
+      setType(initialType);
+      setBudget(budgetRanges[0]!);
+      setTimeline(timelines[0]!);
       setDetail("");
       setConsent(false);
     } catch {
+      trackEvent("form_submit_error", { form_name: "cotizacion" });
       setSubmitStatus("error");
       setSubmitMessage(
         "No pudimos enviar el mensaje. Intenta nuevamente o escríbenos por WhatsApp.",
@@ -108,9 +142,13 @@ function Contact() {
               <h2 className="mt-3 font-display text-xl">WhatsApp</h2>
               <p className="mt-2 text-sm text-muted-foreground">{site.whatsappNumber}</p>
               <a
-                href={site.whatsappUrl}
+                href={
+                  selectedPlan ? whatsappLink(`el plan ${selectedPlan.name}`) : site.whatsappUrl
+                }
                 target="_blank"
                 rel="noopener noreferrer"
+                data-cta="contacto"
+                data-plan={selectedPlan?.slug}
                 className="btn-base btn-primary mt-5 w-full"
               >
                 <MessageCircle className="h-4 w-4" /> Escribir ahora
@@ -123,7 +161,11 @@ function Contact() {
               </p>
               <p className="flex items-center gap-2">
                 <Mail className="h-4 w-4 text-primary" />
-                <a href={`mailto:${site.email}`} className="hover:text-foreground">
+                <a
+                  href={`mailto:${site.email}`}
+                  data-cta="contacto"
+                  className="hover:text-foreground"
+                >
                   {site.email}
                 </a>
               </p>
@@ -134,7 +176,16 @@ function Contact() {
             </div>
           </div>
 
-          <form onSubmit={handleSubmit} className="plate space-y-5 p-7 md:p-9">
+          <form
+            onSubmit={handleSubmit}
+            onFocusCapture={markStarted}
+            className="plate space-y-5 p-7 md:p-9"
+          >
+            {selectedPlan ? (
+              <p className="rounded-md border border-primary/30 bg-primary/5 px-4 py-3 text-sm">
+                Plan consultado: <strong>{selectedPlan.name}</strong> ({selectedPlan.price})
+              </p>
+            ) : null}
             <div>
               <label htmlFor="name" className="mb-2 block text-sm font-medium">
                 Nombre
@@ -163,6 +214,20 @@ function Contact() {
             </div>
 
             <div>
+              <label htmlFor="phone" className="mb-2 block text-sm font-medium">
+                WhatsApp o teléfono <span className="text-muted-foreground">(opcional)</span>
+              </label>
+              <input
+                id="phone"
+                type="tel"
+                autoComplete="tel"
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
+                className={fieldClass}
+              />
+            </div>
+
+            <div>
               <label htmlFor="type" className="mb-2 block text-sm font-medium">
                 Tipo de proyecto
               </label>
@@ -178,6 +243,43 @@ function Contact() {
                   </option>
                 ))}
               </select>
+            </div>
+
+            <div className="grid gap-5 sm:grid-cols-2">
+              <div>
+                <label htmlFor="budget" className="mb-2 block text-sm font-medium">
+                  Presupuesto estimado
+                </label>
+                <select
+                  id="budget"
+                  value={budget}
+                  onChange={(e) => setBudget(e.target.value)}
+                  className={fieldClass}
+                >
+                  {budgetRanges.map((b) => (
+                    <option key={b} value={b}>
+                      {b}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <div>
+                <label htmlFor="timeline" className="mb-2 block text-sm font-medium">
+                  ¿Para cuándo lo necesitas?
+                </label>
+                <select
+                  id="timeline"
+                  value={timeline}
+                  onChange={(e) => setTimeline(e.target.value)}
+                  className={fieldClass}
+                >
+                  {timelines.map((t) => (
+                    <option key={t} value={t}>
+                      {t}
+                    </option>
+                  ))}
+                </select>
+              </div>
             </div>
 
             <div>
@@ -204,7 +306,7 @@ function Contact() {
               <span>
                 Autorizo a Legión Digital Studio a usar mis datos para responder esta solicitud, de
                 acuerdo con la{" "}
-                <a href="/privacidad" className="text-primary underline">
+                <a href="/privacidad/" className="text-primary underline">
                   política de tratamiento de datos
                 </a>
                 .

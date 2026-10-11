@@ -31,13 +31,13 @@ export const Route = createFileRoute("/trabajo/$slug")({
             "@context": "https://schema.org",
             "@type": "BreadcrumbList",
             itemListElement: [
-              { "@type": "ListItem", position: 1, name: "Inicio", item: "/" },
-              { "@type": "ListItem", position: 2, name: "Trabajo", item: "/trabajo/" },
+              { "@type": "ListItem", position: 1, name: "Inicio", item: `${site.url}/` },
+              { "@type": "ListItem", position: 2, name: "Trabajo", item: `${site.url}/trabajo/` },
               {
                 "@type": "ListItem",
                 position: 3,
                 name: c.client,
-                item: `/trabajo/${params.slug}/`,
+                item: `${site.url}/trabajo/${params.slug}/`,
               },
             ],
           }),

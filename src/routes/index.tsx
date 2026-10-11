@@ -137,6 +137,7 @@ function Home() {
                 href={site.whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
+                data-cta="home_hero"
                 className="btn-base btn-primary w-full sm:w-auto"
               >
                 <MessageCircle className="h-4 w-4" /> Cotizar por WhatsApp

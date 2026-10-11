@@ -11,6 +11,7 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { captureCampaign, gaMeasurementId, installContactClickTracking } from "@/lib/analytics";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { WhatsappFloat } from "@/components/site/Bits";
@@ -120,6 +121,17 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           priceRange: "$500.000 - $3.000.000 COP",
         }),
       },
+      ...(gaMeasurementId
+        ? [
+            {
+              src: `https://www.googletagmanager.com/gtag/js?id=${gaMeasurementId}`,
+              async: true,
+            },
+            {
+              children: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}window.gtag=gtag;gtag('js',new Date());gtag('config',${JSON.stringify(gaMeasurementId)});`,
+            },
+          ]
+        : []),
       {
         type: "application/ld+json",
         children: JSON.stringify({
@@ -155,6 +167,11 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+
+  useEffect(() => {
+    captureCampaign();
+    return installContactClickTracking();
+  }, []);
 
   return (
     <QueryClientProvider client={queryClient}>

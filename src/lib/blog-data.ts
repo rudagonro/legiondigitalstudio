@@ -4,9 +4,12 @@ export type BlogSection = {
   bullets?: string[];
 };
 
+export type BlogLink = { label: string; to: string; description: string };
+
 export type BlogPost = {
   slug: string;
   title: string;
+  seoTitle?: string;
   description: string;
   excerpt: string;
   category: string;
@@ -17,6 +20,7 @@ export type BlogPost = {
   answer: string;
   sections: BlogSection[];
   faq: Array<{ question: string; answer: string }>;
+  nextSteps?: BlogLink[];
 };
 
 export const blogPosts: BlogPost[] = [
@@ -24,34 +28,49 @@ export const blogPosts: BlogPost[] = [
     slug: "cuanto-cuesta-pagina-web-colombia-2026",
     title: "¿Cuánto cuesta una página web en Colombia en 2026?",
     description:
-      "Conoce cuánto cuesta una página web en Colombia en 2026, qué incluye cada rango y qué gastos debes prever antes de contratar.",
+      "Precios de referencia de una página web en Colombia en 2026: landing, sitio autoadministrable y tienda, qué cambia el valor y qué pagos continúan después.",
     excerpt:
-      "Rangos reales, costos anuales y señales para comparar propuestas sin pagar de más ni terminar con un sitio que no cumple su objetivo.",
+      "Precios publicados por tipo de página, factores que suben o bajan el valor y costos posteriores para comparar propuestas sin sorpresas.",
     category: "Precios y contratación",
     publishedAt: "2026-10-01",
-    updatedAt: "2026-10-01",
-    readingMinutes: 8,
-    relatedService: "/precios/",
+    updatedAt: "2026-10-11",
+    readingMinutes: 9,
+    relatedService: "/servicios/paginas-web/",
     answer:
-      "En Colombia, una página web profesional puede costar desde $500.000 para una página sencilla y superar los $3.000.000 cuando incluye tienda, pagos o funciones a la medida. El valor final depende del alcance, el contenido, la administración y las integraciones.",
+      "En Legión Digital Studio una landing page cuesta entre $500.000 y $700.000, un sitio autoadministrable entre $800.000 y $1.500.000 y una tienda en línea entre $2.000.000 y $3.000.000. El valor exacto depende del número de páginas, el contenido, el panel, el catálogo y las integraciones. Aparte debes prever las renovaciones de dominio, correo y alojamiento con su proveedor.",
     sections: [
       {
         heading: "La respuesta corta: depende del alcance, no solo del diseño",
         paragraphs: [
-          "En Colombia, una página web profesional puede comenzar alrededor de $500.000 para una landing page y superar varios millones cuando incluye catálogo, pagos, usuarios o procesos a la medida. La diferencia no está únicamente en cuántas pantallas se ven: también intervienen la estrategia, el contenido, la programación, las integraciones y el acompañamiento después de publicar.",
+          "Si comparas cotizaciones encontrarás valores muy distintos para algo que todos llaman “página web”. La diferencia no está únicamente en cuántas pantallas se ven: también cuentan los textos, la programación, el panel para editar, las integraciones y lo que ocurre después de publicar.",
           "Un precio responsable debe explicar qué se entrega, cuánto tarda, qué puedes administrar y qué costos continuarán cada año. Comparar solo la cifra final suele ocultar diferencias importantes entre una plantilla instalada y un proyecto diseñado para el negocio.",
         ],
       },
       {
-        heading: "Rangos de referencia para un negocio colombiano",
+        heading: "Precios y tiempos de referencia por tipo de página",
         paragraphs: [
-          "Estos rangos sirven como punto de partida. La cotización definitiva depende del número de páginas, la preparación del contenido y las funciones necesarias.",
+          "Estos son los rangos que publicamos en Legión Digital Studio. La cotización definitiva se entrega por escrito antes de comenzar y fija el valor dentro del rango según el alcance.",
         ],
         bullets: [
-          "Landing page: entre $500.000 y $700.000. Reúne la propuesta, beneficios y contacto en una sola página.",
-          "Sitio autoadministrable: entre $800.000 y $1.500.000. Incluye varias páginas y un panel para actualizar contenido.",
-          "Tienda en línea: entre $2.000.000 y $3.000.000. Agrega catálogo, carrito, medios de pago y administración de productos.",
+          "Landing page: $500.000 a $700.000, entrega en 5 a 8 días. Una sola página con tu propuesta, beneficios, formulario y WhatsApp.",
+          "Sitio autoadministrable: $800.000 a $1.500.000, entrega en 2 a 3 semanas. Entre 5 y 10 páginas, una por servicio, y un panel para cambiar textos e imágenes.",
+          "Tienda en línea: $2.000.000 a $3.000.000, entrega en 3 a 5 semanas. Catálogo con categorías, carrito o cotización, medios de pago y panel de productos.",
           "Software a la medida: se cotiza según procesos, usuarios, reportes, inventarios e integraciones.",
+        ],
+      },
+      {
+        heading: "Qué hace subir o bajar el precio",
+        paragraphs: [
+          "Dos negocios pueden pedir “una página sencilla” y necesitar trabajos muy diferentes. Estos factores son los que más mueven una cotización:",
+        ],
+        bullets: [
+          "Número de páginas o secciones: cada servicio con su propia página requiere textos, diseño y revisión.",
+          "Contenido: si los textos y las fotos están listos o hay que organizarlos desde una conversación.",
+          "Panel de administración: poder cambiar textos, fotos o productos sin depender del proveedor.",
+          "Catálogo: cantidad de productos, categorías y variantes como talla, color o presentación.",
+          "Pagos, envíos y pedidos: cada regla de negocio debe programarse y probarse.",
+          "Integraciones: reservas, pasarelas de pago, facturación, inventarios u otros sistemas.",
+          "Materiales que no existen: producción fotográfica o de video se cotiza aparte.",
         ],
       },
       {
@@ -69,10 +88,17 @@ export const blogPosts: BlogPost[] = [
         ],
       },
       {
-        heading: "Costos anuales que no deben sorprenderte",
+        heading: "Costos que continúan después de publicar",
         paragraphs: [
-          "El desarrollo suele pagarse una sola vez, pero el dominio, el correo profesional y algunos servicios externos se renuevan. El alojamiento puede estar incluido o cobrarse por separado. Antes de contratar, pregunta quién administra cada cuenta y cuánto costará mantenerla.",
-          "También conviene definir si habrá soporte, copias de seguridad, actualizaciones de contenido o mejoras posteriores. Un sitio económico puede resultar costoso si depende permanentemente del proveedor para cambiar un teléfono o una fotografía.",
+          "El desarrollo suele pagarse una sola vez, pero el dominio, el correo profesional y el alojamiento se renuevan con su proveedor, y sus tarifas dependen de cada uno. Una tienda puede sumar las comisiones de la pasarela de pagos. Antes de contratar, pregunta quién administra cada cuenta, a nombre de quién queda y cuándo vence.",
+          "También conviene definir si habrá soporte, copias de seguridad, actualizaciones de contenido o mejoras posteriores. En Legión el mantenimiento y el soporte continuo se contratan por separado cuando no están incluidos en la propuesta. Un sitio económico puede resultar costoso si depende permanentemente del proveedor para cambiar un teléfono o una fotografía.",
+        ],
+      },
+      {
+        heading: "Cómo se paga y qué cubre la garantía",
+        paragraphs: [
+          "En nuestros proyectos el pago normalmente se divide en 50 % para iniciar y 50 % contra entrega, antes de publicar o transferir los archivos finales. El plazo empieza a contar cuando se confirma el anticipo y se reciben los contenidos.",
+          "Después de publicar corregimos sin costo los errores técnicos reproducibles del desarrollo que se reporten dentro de 30 días. Las nuevas páginas, funciones o cambios de contenido no hacen parte de esa garantía y se cotizan aparte.",
         ],
       },
       {
@@ -86,7 +112,17 @@ export const blogPosts: BlogPost[] = [
       {
         question: "¿El dominio está incluido en el precio?",
         answer:
-          "Depende de la propuesta. Debe indicarse quién lo compra, a nombre de quién queda y cuánto costará renovarlo.",
+          "Depende de la propuesta. Debe indicarse quién lo compra, a nombre de quién queda y cuánto costará renovarlo. En Legión las renovaciones de dominio y correo se pagan directamente a su proveedor.",
+      },
+      {
+        question: "¿Por qué algunas páginas web cuestan mucho menos?",
+        answer:
+          "Suelen incluir menos alcance: una plantilla con pocos cambios, sin textos trabajados, sin panel o con costos mensuales posteriores. Compara qué se entrega, quién es dueño de las cuentas y qué pagarás después, no solo el valor inicial.",
+      },
+      {
+        question: "¿Cuánto cuesta mantener una página web?",
+        answer:
+          "Depende de las renovaciones de dominio, correo y alojamiento y de si contratas soporte para cambios. Esos valores dependen de cada proveedor y deben aparecer separados del costo de desarrollo.",
       },
       {
         question: "¿Una página barata puede aparecer en Google?",
@@ -94,27 +130,56 @@ export const blogPosts: BlogPost[] = [
           "Puede indexarse, pero posicionarse requiere estructura técnica, contenido útil, autoridad y seguimiento; no depende únicamente del precio.",
       },
     ],
+    nextSteps: [
+      {
+        label: "Planes y precios",
+        to: "/precios/",
+        description: "Qué incluye cada plan y qué se cobra aparte.",
+      },
+      {
+        label: "Diseño de páginas web",
+        to: "/servicios/paginas-web/",
+        description: "Proceso, condiciones y preguntas antes de contratar.",
+      },
+      {
+        label: "Proyectos en línea",
+        to: "/trabajo/",
+        description: "Sitios reales que puedes visitar desde tu celular.",
+      },
+    ],
   },
   {
     slug: "que-tipo-de-pagina-web-necesita-mi-negocio",
-    title: "¿Qué tipo de página web necesita mi negocio?",
+    title: "¿Qué tipo de página web necesita mi negocio? Landing page o sitio web",
+    seoTitle: "Landing page o sitio web: ¿qué necesita tu negocio?",
     description:
-      "Descubre qué tipo de página web necesita tu negocio: página informativa, landing, sitio empresarial, catálogo o tienda virtual.",
+      "Diferencias entre landing page y sitio web, cuándo conviene cada una, si una landing puede posicionarse en Google y cuándo necesitas catálogo o tienda.",
     excerpt:
       "La opción adecuada depende de lo que vendes, cuánto debe entender el cliente y si necesitas catálogo, pagos, publicidad o posicionamiento en Google.",
     category: "Estrategia web",
     publishedAt: "2026-10-01",
-    updatedAt: "2026-10-01",
-    readingMinutes: 7,
+    updatedAt: "2026-10-11",
+    readingMinutes: 8,
     relatedService: "/servicios/paginas-web/",
     answer:
-      "Un negocio con una sola oferta puede comenzar con una página enfocada en contacto. Si ofrece varios servicios necesita un sitio empresarial; si muestra productos, un catálogo; y si debe cobrar en línea, una tienda virtual.",
+      "Una landing page es una sola página enfocada en una acción, ideal para una oferta concreta o una campaña. Un sitio web tiene varias páginas y conviene cuando ofreces varios servicios o quieres aparecer en Google por distintas búsquedas. Si muestras productos necesitas un catálogo y, si cobras en línea, una tienda virtual.",
     sections: [
       {
         heading: "No son dos nombres para el mismo producto",
         paragraphs: [
           "Una landing page concentra todo en una sola dirección y conduce a una acción: solicitar una cotización, reservar una cita o comprar. Un sitio web distribuye la información entre páginas como servicios, nosotros, casos, preguntas y contacto.",
           "La decisión correcta depende de lo que el visitante necesita entender antes de actuar y de cómo llegará al sitio. Una campaña publicitaria puede funcionar mejor con una landing directa; una empresa con varios servicios necesita una estructura que pueda crecer y posicionarse por diferentes búsquedas.",
+        ],
+      },
+      {
+        heading: "Diferencias entre landing page y sitio web",
+        paragraphs: ["Esta comparación resume en qué se diferencian en la práctica:"],
+        bullets: [
+          "Objetivo: la landing persigue una sola acción; el sitio atiende varias necesidades y públicos.",
+          "Estructura: la landing es una página larga; el sitio reparte el contenido en varias direcciones.",
+          "Tráfico: la landing suele recibir visitas de anuncios o redes; el sitio, además, de búsquedas en Google.",
+          "Posicionamiento: la landing compite por una intención principal; el sitio puede competir por una búsqueda en cada página.",
+          "Inversión con Legión: landing de $500.000 a $700.000 en 5 a 8 días; sitio autoadministrable de $800.000 a $1.500.000 en 2 a 3 semanas.",
         ],
       },
       {
@@ -142,9 +207,16 @@ export const blogPosts: BlogPost[] = [
         ],
       },
       {
-        heading: "La publicidad y el SEO no piden exactamente lo mismo",
+        heading: "¿Se puede hacer SEO a una landing page?",
         paragraphs: [
-          "Una landing puede responder muy bien a un anuncio porque el mensaje coincide con la campaña. Para SEO, un sitio completo ofrece más espacio para demostrar experiencia, cubrir preguntas y construir relaciones entre temas. Esto no significa que una landing no pueda indexarse, sino que tendrá menos oportunidades para competir por búsquedas variadas.",
+          "Sí. Una landing puede indexarse y aparecer en Google si tiene contenido en texto, un título y una descripción propios, un encabezado principal claro, buena velocidad en celular y enlaces que permitan descubrirla. Lo que no puede hacer es competir bien por muchas búsquedas distintas a la vez.",
+          "Si la landing se crea solo para una campaña y repite el contenido de otra página, conviene definir cuál es la versión oficial para evitar duplicados. Si con el tiempo atraes búsquedas de varios servicios, lo natural es convertir la landing en la portada de un sitio y crear una página para cada servicio.",
+        ],
+        bullets: [
+          "Una intención de búsqueda principal por página.",
+          "Texto visible que responda dudas reales, no solo imágenes.",
+          "Título, descripción y encabezado coherentes con esa búsqueda.",
+          "Carga rápida y diseño cómodo en celular.",
         ],
       },
       {
@@ -161,22 +233,45 @@ export const blogPosts: BlogPost[] = [
           "Sí. De hecho, ambos canales suelen ser parte de su objetivo principal de conversión.",
       },
       {
+        question: "¿Una landing page aparece en Google?",
+        answer:
+          "Puede aparecer si es rastreable y tiene contenido útil, pero compite por menos búsquedas que un sitio con una página por servicio.",
+      },
+      {
         question: "¿Puedo convertir una landing en un sitio completo después?",
         answer:
           "Sí, si el proyecto se construye con una estructura preparada para añadir nuevas rutas y contenidos.",
+      },
+    ],
+    nextSteps: [
+      {
+        label: "Landing pages",
+        to: "/servicios/landing-pages/",
+        description: "Una página, un objetivo, desde $500.000.",
+      },
+      {
+        label: "Sitio web a la medida",
+        to: "/servicios/paginas-web/",
+        description: "Varias páginas, panel y condiciones claras.",
+      },
+      {
+        label: "Comparar planes",
+        to: "/precios/",
+        description: "Qué incluye cada nivel y qué se cobra aparte.",
       },
     ],
   },
   {
     slug: "como-aparecer-en-google-pagina-nueva",
     title: "Cómo aparecer en Google con una página web nueva",
+    seoTitle: "Cómo hacer que tu página web aparezca en Google",
     description:
       "Guía práctica para que una página nueva sea rastreada, indexada y empiece a competir en Google sin promesas de resultados inmediatos.",
     excerpt:
       "Publicar no basta: Google debe descubrir, entender y considerar útil cada página antes de mostrarla para búsquedas relevantes.",
     category: "SEO técnico",
     publishedAt: "2026-10-01",
-    updatedAt: "2026-10-01",
+    updatedAt: "2026-10-11",
     readingMinutes: 9,
     relatedService: "/servicios/seo-tecnico/",
     answer:
@@ -200,6 +295,19 @@ export const blogPosts: BlogPost[] = [
         paragraphs: [
           "El sitemap enumera las direcciones que quieres que Google conozca. Debe usar las URL oficiales, responder correctamente y excluir páginas privadas, duplicadas o marcadas noindex. Luego se registra en Google Search Console.",
           "Enviar un sitemap ayuda al descubrimiento, pero no obliga a Google a indexar ni posicionar todas las direcciones. La calidad y utilidad de cada página siguen siendo decisivas.",
+        ],
+      },
+      {
+        heading: "Cómo dar de alta tu página en Google y otros buscadores",
+        paragraphs: [
+          "“Dar de alta” una página no es un trámite pagado: consiste en demostrar que el sitio es tuyo y decirle al buscador dónde están tus direcciones. Google y Bing ofrecen herramientas gratuitas para hacerlo.",
+        ],
+        bullets: [
+          "Crea una propiedad en Google Search Console y verifica el dominio con el registro DNS que te indica.",
+          "En la sección Sitemaps, envía la dirección de tu sitemap, por ejemplo tudominio.com/sitemap.xml.",
+          "Usa la inspección de URL para revisar una página importante y solicitar su indexación.",
+          "Registra el sitio en Bing Webmaster Tools; permite importar la configuración desde Search Console.",
+          "Revisa después de unos días los informes de páginas indexadas y corrige los errores que aparezcan.",
         ],
       },
       {
@@ -239,6 +347,28 @@ export const blogPosts: BlogPost[] = [
         question: "¿Pagar anuncios mejora el posicionamiento orgánico?",
         answer:
           "No directamente. Los anuncios y los resultados orgánicos son sistemas distintos, aunque la publicidad puede generar conocimiento de marca y clientes.",
+      },
+      {
+        question: "¿Hay que pagar para dar de alta una página en Google?",
+        answer:
+          "No. Search Console y Bing Webmaster Tools son gratuitos. Lo que tiene costo es el trabajo técnico y de contenido para que la página merezca aparecer.",
+      },
+    ],
+    nextSteps: [
+      {
+        label: "SEO técnico",
+        to: "/servicios/seo-tecnico/",
+        description: "Estructura, metadatos, sitemap y Search Console configurados.",
+      },
+      {
+        label: "Páginas web a la medida",
+        to: "/servicios/paginas-web/",
+        description: "Sitios que nacen preparados para aparecer en Google.",
+      },
+      {
+        label: "Cuánto cuesta una página web",
+        to: "/blog/cuanto-cuesta-pagina-web-colombia-2026/",
+        description: "Precios de referencia y costos posteriores.",
       },
     ],
   },

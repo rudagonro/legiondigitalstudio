@@ -37,6 +37,9 @@ jobs:
 
       - name: Build prerendered website
         shell: bash
+        env:
+          # Optional repository variable (Settings > Variables). Empty = no GA4.
+          VITE_GA_MEASUREMENT_ID: ${{ vars.VITE_GA_MEASUREMENT_ID }}
         run: |
           mv index.html /tmp/published-index.html
           mv assets /tmp/published-assets

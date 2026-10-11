@@ -2,7 +2,7 @@ import { createFileRoute, Link, notFound, redirect } from "@tanstack/react-route
 import { ArrowRight, Clock3, MessageCircle } from "lucide-react";
 import { CtaBand, Section } from "@/components/site/Bits";
 import { blogPosts, formatBlogDate } from "@/lib/blog-data";
-import { site } from "@/lib/site-data";
+import { site, whatsappLink } from "@/lib/site-data";
 
 export const Route = createFileRoute("/blog/$slug")({
   loader: ({ params }) => {
@@ -29,7 +29,7 @@ export const Route = createFileRoute("/blog/$slug")({
 
     return {
       meta: [
-        { title: `${post.title} | Legión Digital Studio` },
+        { title: `${post.seoTitle ?? post.title} | Legión Digital Studio` },
         { name: "description", content: post.description },
         { property: "og:title", content: post.title },
         { property: "og:description", content: post.description },
@@ -114,15 +114,19 @@ function BlogPostPage() {
               <p className="mt-5 flex flex-wrap items-center gap-x-4 gap-y-2 text-xs text-muted-foreground">
                 <span>Por Legión Digital Studio</span>
                 <span>Publicado el {formatBlogDate(post.publishedAt)}</span>
+                {post.updatedAt !== post.publishedAt ? (
+                  <span>Actualizado el {formatBlogDate(post.updatedAt)}</span>
+                ) : null}
                 <span className="inline-flex items-center gap-1.5">
                   <Clock3 className="h-3.5 w-3.5" /> {post.readingMinutes} min de lectura
                 </span>
               </p>
               <div className="mt-6 flex flex-wrap gap-3">
                 <a
-                  href={site.whatsappUrl}
+                  href={whatsappLink(`una página web (vengo de la guía “${post.title}”)`)}
                   target="_blank"
                   rel="noopener noreferrer"
+                  data-cta="blog_articulo"
                   className="btn-base btn-primary"
                 >
                   <MessageCircle className="h-4 w-4" /> Aplicarlo a mi negocio
@@ -144,6 +148,21 @@ function BlogPostPage() {
                   {post.answer}
                 </p>
               </section>
+
+              {post.nextSteps ? (
+                <nav aria-label="Siguientes pasos" className="grid gap-3 sm:grid-cols-3">
+                  {post.nextSteps.map((step) => (
+                    <Link key={step.to} to={step.to} className="plate plate-hover p-4">
+                      <span className="flex items-center justify-between gap-2 font-display text-sm font-bold text-primary">
+                        {step.label} <ArrowRight className="h-4 w-4 shrink-0" />
+                      </span>
+                      <span className="mt-1 block text-xs leading-relaxed text-muted-foreground">
+                        {step.description}
+                      </span>
+                    </Link>
+                  ))}
+                </nav>
+              ) : null}
 
               {post.sections.map((section) => (
                 <section key={section.heading}>

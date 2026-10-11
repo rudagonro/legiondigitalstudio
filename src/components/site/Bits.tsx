@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { Check, MessageCircle } from "lucide-react";
 import { useState, type ReactNode } from "react";
-import { plans, site, type Plan } from "@/lib/site-data";
+import { plans, site, whatsappLink, type Plan } from "@/lib/site-data";
 
 export function Section({
   children,
@@ -43,10 +43,12 @@ export function PageHero({
   eyebrow,
   title,
   intro,
+  whatsappSubject,
 }: {
   eyebrow: string;
   title: string;
   intro: string;
+  whatsappSubject?: string;
 }) {
   return (
     <section className="grid-backdrop border-b border-border">
@@ -57,9 +59,10 @@ export function PageHero({
           <p className="mt-4 text-base leading-relaxed text-muted-foreground md:text-lg">{intro}</p>
           <div className="mt-6 flex flex-wrap gap-3">
             <a
-              href={site.whatsappUrl}
+              href={whatsappSubject ? whatsappLink(whatsappSubject) : site.whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
+              data-cta="hero"
               className="btn-base btn-primary"
             >
               <MessageCircle className="h-4 w-4" /> Cotizar por WhatsApp
@@ -121,13 +124,22 @@ export function PlanCard({
         ))}
       </ul>
       <a
-        href={site.whatsappUrl}
+        href={whatsappLink(`el plan ${plan.name}`)}
         target="_blank"
         rel="noopener noreferrer"
+        data-cta="plan_card"
+        data-plan={plan.slug}
         className={`btn-base mt-6 w-full ${selected ? "btn-primary" : "btn-outline"}`}
       >
         Cotizar este plan
       </a>
+      <Link
+        to="/contacto/"
+        search={{ plan: plan.slug }}
+        className="mt-3 text-center text-xs font-medium text-muted-foreground underline-offset-4 hover:text-primary hover:underline"
+      >
+        Prefiero enviar el formulario
+      </Link>
     </article>
   );
 }
@@ -171,6 +183,7 @@ export function CtaBand({
               href={site.whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
+              data-cta="cta_band"
               className="btn-base btn-primary"
             >
               <MessageCircle className="h-4 w-4" /> Escribir por WhatsApp
@@ -192,6 +205,7 @@ export function WhatsappFloat() {
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Escribir por WhatsApp"
+      data-cta="boton_flotante"
       className="fixed bottom-5 right-5 z-50 grid h-13 w-13 place-items-center rounded-full bg-primary text-primary-foreground shadow-plate transition-transform hover:scale-105"
       style={{ height: "3.25rem", width: "3.25rem" }}
     >

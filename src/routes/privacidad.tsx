@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageHero, Section } from "@/components/site/Bits";
 import { site } from "@/lib/site-data";
+import { gaMeasurementId } from "@/lib/analytics";
 
 export const Route = createFileRoute("/privacidad")({
   head: () => ({
@@ -94,6 +95,18 @@ function Privacy() {
               a Legión Digital Studio y responder la solicitud del usuario.
             </p>
           </section>
+
+          {gaMeasurementId ? (
+            <section>
+              <h2 className="font-display text-xl text-foreground">Medición del sitio</h2>
+              <p className="mt-3">
+                Usamos Google Analytics para conocer de forma agregada cuántas personas visitan el
+                sitio, desde qué páginas llegan y cuántas usan el formulario o el botón de WhatsApp.
+                Esta herramienta utiliza cookies y no recibe tu nombre, correo ni el contenido de tu
+                mensaje. Puedes bloquear las cookies desde la configuración de tu navegador.
+              </p>
+            </section>
+          ) : null}
 
           <section>
             <h2 className="font-display text-xl text-foreground">Vigencia</h2>

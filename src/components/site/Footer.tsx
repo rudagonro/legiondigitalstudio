@@ -31,6 +31,7 @@ export function Footer() {
                 href={site.whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
+                data-cta="footer"
                 className="flex items-center gap-2 transition-colors hover:text-foreground"
               >
                 <MessageCircle className="h-4 w-4 text-primary" /> {site.whatsappNumber}
@@ -39,6 +40,7 @@ export function Footer() {
             <li className="min-w-0">
               <a
                 href={`mailto:${site.email}`}
+                data-cta="footer"
                 className="flex min-w-0 items-center gap-2 transition-colors hover:text-foreground"
               >
                 <Mail className="h-4 w-4 shrink-0 text-primary" />
