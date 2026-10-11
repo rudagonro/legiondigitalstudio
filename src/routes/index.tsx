@@ -229,7 +229,7 @@ function Home() {
         />
         <PlansGrid />
         <p className="mt-6 text-sm text-muted-foreground">
-          Los rangos dependen del número de páginas y del catálogo. Todos los planes incluyen
+          El precio final depende del número de páginas, del catálogo y de las funciones requeridas. Todos los planes incluyen
           dominio .com o .com.co y alojamiento el primer año: dejamos tu proyecto publicado y
           funcionando, y te entregamos la propiedad del dominio.
         </p>

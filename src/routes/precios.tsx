@@ -9,7 +9,7 @@ export const Route = createFileRoute("/precios")({
       {
         name: "description",
         content:
-          "Precios claros: landing page $500.000 a $700.000, sitio autoadministrable $800.000 a $1.500.000 y tienda en línea $2.000.000 a $3.000.000.",
+          "Precios claros: landing page desde $500.000, sitio autoadministrable desde $800.000 y tienda en línea desde $2.000.000.",
       },
       {
         property: "og:title",
@@ -52,7 +52,7 @@ function Pricing() {
       <PageHero
         eyebrow="Precios"
         title="Precios visibles, sin tener que preguntar."
-        intro="Tres niveles según lo que tu negocio necesita hoy. Los rangos dependen del número de páginas y del tamaño del catálogo; la propuesta escrita fija el valor exacto antes de comenzar."
+        intro="Tres niveles según lo que tu negocio necesita hoy. Los precios parten del valor indicado en cada plan y aumentan según el número de páginas, el catálogo y las funciones requeridas. La propuesta escrita fija el valor exacto antes de comenzar."
       />
 
       <Section>

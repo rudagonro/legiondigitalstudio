@@ -59,7 +59,7 @@ function Terms() {
           <section>
             <h2 className="font-display text-xl text-foreground">3. Precios y forma de pago</h2>
             <p className="mt-3">
-              Los valores publicados son rangos de referencia en pesos colombianos. El precio final
+              Los valores publicados son precios iniciales en pesos colombianos. El precio final
               se confirma por escrito antes de comenzar. Salvo que la propuesta indique algo
               diferente, se paga el 50 % para reservar e iniciar el proyecto y el 50 % restante
               contra entrega, antes de publicar o transferir los archivos finales.

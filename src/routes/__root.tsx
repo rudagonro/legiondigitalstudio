@@ -118,7 +118,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
             addressLocality: "Bogotá",
             addressCountry: "CO",
           },
-          priceRange: "$500.000 - $3.000.000 COP",
+          priceRange: "Desde $500.000 COP",
         }),
       },
       ...(gaMeasurementId

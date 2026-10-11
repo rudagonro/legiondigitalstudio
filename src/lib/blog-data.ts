@@ -37,7 +37,7 @@ export const blogPosts: BlogPost[] = [
     readingMinutes: 9,
     relatedService: "/servicios/paginas-web/",
     answer:
-      "En Legión Digital Studio una landing page cuesta entre $500.000 y $700.000, un sitio autoadministrable entre $800.000 y $1.500.000 y una tienda en línea entre $2.000.000 y $3.000.000. El valor exacto depende del número de páginas, el contenido, el panel, el catálogo y las integraciones. Todos los planes incluyen dominio .com o .com.co y alojamiento durante el primer año; desde el segundo año se pagan sus renovaciones.",
+      "En Legión Digital Studio una landing page cuesta desde $500.000, un sitio autoadministrable desde $800.000 y una tienda en línea desde $2.000.000. El valor exacto depende del número de páginas, el contenido, el panel, el catálogo y las integraciones. Todos los planes incluyen dominio .com o .com.co y alojamiento durante el primer año; desde el segundo año se pagan sus renovaciones.",
     sections: [
       {
         heading: "La respuesta corta: depende del alcance, no solo del diseño",
@@ -49,12 +49,12 @@ export const blogPosts: BlogPost[] = [
       {
         heading: "Precios y tiempos de referencia por tipo de página",
         paragraphs: [
-          "Estos son los rangos que publicamos en Legión Digital Studio. La cotización definitiva se entrega por escrito antes de comenzar y fija el valor dentro del rango según el alcance.",
+          "Estos son los precios iniciales que publicamos en Legión Digital Studio. El valor aumenta según el alcance y se confirma en una cotización escrita antes de comenzar.",
         ],
         bullets: [
-          "Landing page: $500.000 a $700.000, entrega en 5 a 8 días. Una sola página con tu propuesta, beneficios, formulario y WhatsApp.",
-          "Sitio autoadministrable: $800.000 a $1.500.000, entrega en 2 a 3 semanas. Entre 5 y 10 páginas, una por servicio, y un panel para cambiar textos e imágenes.",
-          "Tienda en línea: $2.000.000 a $3.000.000, entrega en 3 a 5 semanas. Catálogo con categorías, carrito o cotización, medios de pago y panel de productos.",
+          "Landing page: desde $500.000, entrega en 5 a 8 días. Una sola página con tu propuesta, beneficios, formulario y WhatsApp.",
+          "Sitio autoadministrable: desde $800.000, entrega en 2 a 3 semanas. Entre 5 y 10 páginas, una por servicio, y un panel para cambiar textos e imágenes.",
+          "Tienda en línea: desde $2.000.000, entrega en 3 a 5 semanas. Catálogo con categorías, carrito o cotización, medios de pago y panel de productos.",
           "Software a la medida: se cotiza según procesos, usuarios, reportes, inventarios e integraciones.",
         ],
       },
@@ -179,7 +179,7 @@ export const blogPosts: BlogPost[] = [
           "Estructura: la landing es una página larga; el sitio reparte el contenido en varias direcciones.",
           "Tráfico: la landing suele recibir visitas de anuncios o redes; el sitio, además, de búsquedas en Google.",
           "Posicionamiento: la landing compite por una intención principal; el sitio puede competir por una búsqueda en cada página.",
-          "Inversión con Legión: landing de $500.000 a $700.000 en 5 a 8 días; sitio autoadministrable de $800.000 a $1.500.000 en 2 a 3 semanas.",
+          "Inversión con Legión: landing desde $500.000 en 5 a 8 días; sitio autoadministrable desde $800.000 en 2 a 3 semanas.",
         ],
       },
       {
@@ -654,7 +654,7 @@ export const blogPosts: BlogPost[] = [
     readingMinutes: 9,
     relatedService: "/servicios/tiendas-en-linea/",
     answer:
-      "En Legión Digital Studio una tienda en línea parte aproximadamente de $2.000.000 a $3.000.000. El valor puede aumentar según productos, variantes, pagos, envíos, inventario, usuarios e integraciones necesarias.",
+      "En Legión Digital Studio una tienda en línea parte desde $2.000.000. El valor puede aumentar según productos, variantes, pagos, envíos, inventario, usuarios e integraciones necesarias.",
     sections: [
       {
         heading: "Una tienda virtual es más que un catálogo",

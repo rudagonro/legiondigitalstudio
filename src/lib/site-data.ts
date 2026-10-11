@@ -51,7 +51,7 @@ export const plans: Plan[] = [
     slug: "landing",
     name: "Landing Page",
     formType: "Landing / una página",
-    price: "$500.000 – $700.000",
+    price: "Desde $500.000",
     note: "Pago único · entrega en 5 a 8 días",
 
     summary:
@@ -71,7 +71,7 @@ export const plans: Plan[] = [
     slug: "autoadministrable",
     name: "Sitio Autoadministrable",
     formType: "Sitio completo autoadministrable",
-    price: "$800.000 – $1.500.000",
+    price: "Desde $800.000",
     note: "Entrega en 2 a 3 semanas",
 
     summary:
@@ -91,7 +91,7 @@ export const plans: Plan[] = [
     slug: "cms-ecommerce",
     name: "Tienda en Línea",
     formType: "Tienda en línea",
-    price: "$2.000.000 – $3.000.000",
+    price: "Desde $2.000.000",
     note: "Entrega en 3 a 5 semanas",
 
     summary:
@@ -202,7 +202,7 @@ export const services: Service[] = [
       {
         question: "¿Cuánto cuesta una página web con Legión Digital Studio?",
         answer:
-          "Una landing page cuesta entre $500.000 y $700.000, un sitio autoadministrable entre $800.000 y $1.500.000 y una tienda en línea entre $2.000.000 y $3.000.000. El valor exacto depende del número de páginas, del catálogo y de las funciones, y queda fijado por escrito antes de comenzar.",
+          "Una landing page cuesta desde $500.000, un sitio autoadministrable desde $800.000 y una tienda en línea desde $2.000.000. El valor exacto depende del número de páginas, del catálogo y de las funciones, y queda fijado por escrito antes de comenzar.",
       },
       {
         question: "¿Qué necesito tener listo para empezar?",
