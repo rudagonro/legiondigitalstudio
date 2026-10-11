@@ -30,6 +30,7 @@ export const Route = createFileRoute("/precios")({
 
 const included = [
   "Diseño a la medida, sin plantillas",
+  "Dominio propio incluido el primer año",
   "Adaptado a celular, tableta y computador",
   "SEO técnico y velocidad optimizada",
   "Botón y chat de WhatsApp",
@@ -39,7 +40,8 @@ const included = [
 ];
 
 const notIncluded = [
-  "Renovación anual del dominio y el correo (se paga a su proveedor)",
+  "Renovación del dominio desde el segundo año y del correo (se paga a su proveedor)",
+  "Alojamiento, cuando el proyecto lo necesita (la propuesta lo indica)",
   "Pauta publicitaria en Google o redes",
   "Producción fotográfica o de video",
 ];

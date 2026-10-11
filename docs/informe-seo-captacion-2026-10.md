@@ -169,16 +169,16 @@ real desde producción y confirmar que llega al correo.
 
 | Pendiente | Quién | Para qué |
 | --- | --- | --- |
-| Crear GA4 y la variable `VITE_GA_MEASUREMENT_ID` en GitHub | Tú | Ver los eventos en informes |
+| ~~Crear GA4 y la variable~~ Hecho: propiedad “Legión Digital Studio - Sitio web” (`G-XH96PHZHEM`) y variable en GitHub | — | Formularios de la medición mejorada desactivados para no duplicar eventos |
+| Marcar `generate_lead` como evento clave | Claude o tú, después de publicar | GA4 solo lo permite cuando el evento ya llegó |
 | Autorizar la publicación (merge a `main`) | Tú | El push a `main` despliega |
 | Opcional: regla 301 en Cloudflare `/blog/landing-page-o-sitio-web/*` → nueva guía | Tú | Redirección de servidor, además del archivo |
 | Inspeccionar y solicitar indexación de las páginas cambiadas | Tú (Search Console) | Acelerar el nuevo rastreo |
-| Testimonios autorizados de clientes | Clientes | Prueba social real |
+| Google Business y reseñas | Tú y clientes | Ver `docs/google-business-y-referencias.md`; requiere atención presencial |
 | Enlace “Sitio desarrollado por Legión” en los sitios de clientes | Clientes | Referencias externas verificables |
-| Confirmar Google Meet y Habeas Data en el caso de la abogada | Tú | Mantener solo funciones comprobables |
-| ¿El primer año de alojamiento está incluido? | Tú | Hoy los textos no lo dicen; la FAQ quedó neutral |
+| ~~Google Meet y Habeas Data de la abogada~~ Confirmado: Meet es interno y el formulario exige aceptar la política de datos | — | — |
+| ~~Alojamiento~~ Dominio incluido el primer año en todos los planes; aplicado en planes, preguntas y términos | — | Falta definir qué extensiones (.com, .co, .com.co) cubre |
 | ¿Existe un plan de mantenimiento con precio? | Tú | Completar la sección de costos posteriores |
-| ¿Hay perfil de Google Business? | Tú | Búsquedas de marca y locales |
 | Presupuesto máximo para una prueba de Ads | Tú | Ver sección 6 |
 
 ## 6. Publicidad: prueba de Google Ads

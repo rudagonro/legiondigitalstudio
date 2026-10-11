@@ -37,7 +37,7 @@ export const blogPosts: BlogPost[] = [
     readingMinutes: 9,
     relatedService: "/servicios/paginas-web/",
     answer:
-      "En Legión Digital Studio una landing page cuesta entre $500.000 y $700.000, un sitio autoadministrable entre $800.000 y $1.500.000 y una tienda en línea entre $2.000.000 y $3.000.000. El valor exacto depende del número de páginas, el contenido, el panel, el catálogo y las integraciones. Aparte debes prever las renovaciones de dominio, correo y alojamiento con su proveedor.",
+      "En Legión Digital Studio una landing page cuesta entre $500.000 y $700.000, un sitio autoadministrable entre $800.000 y $1.500.000 y una tienda en línea entre $2.000.000 y $3.000.000. El valor exacto depende del número de páginas, el contenido, el panel, el catálogo y las integraciones. El dominio va incluido el primer año; desde el segundo se renueva con su proveedor, igual que el correo y el alojamiento cuando el proyecto lo necesita.",
     sections: [
       {
         heading: "La respuesta corta: depende del alcance, no solo del diseño",
@@ -112,7 +112,7 @@ export const blogPosts: BlogPost[] = [
       {
         question: "¿El dominio está incluido en el precio?",
         answer:
-          "Depende de la propuesta. Debe indicarse quién lo compra, a nombre de quién queda y cuánto costará renovarlo. En Legión las renovaciones de dominio y correo se pagan directamente a su proveedor.",
+          "Depende de la propuesta. Debe indicarse quién lo compra, a nombre de quién queda y cuánto costará renovarlo. En Legión el dominio va incluido el primer año en todos los planes; desde el segundo, la renovación se paga directamente a su proveedor.",
       },
       {
         question: "¿Por qué algunas páginas web cuestan mucho menos?",

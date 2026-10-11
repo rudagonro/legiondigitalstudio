@@ -58,6 +58,7 @@ export const plans: Plan[] = [
       "Una sola página, directa al punto: presenta tu negocio, genera confianza y lleva al visitante a escribirte por WhatsApp.",
     features: [
       "Diseño a la medida, sin plantillas genéricas",
+      "Dominio propio incluido el primer año",
       "Una página con todas tus secciones",
       "Adaptada a celular, tableta y computador",
       "Botón y chat de WhatsApp",
@@ -188,7 +189,7 @@ export const services: Service[] = [
       },
       {
         title: "Renovaciones",
-        text: "Dominio, correo, alojamiento y otros servicios de terceros se renuevan con su proveedor. La propuesta indica cuáles aplican a tu proyecto.",
+        text: "El dominio va incluido el primer año; desde el segundo se renueva con su proveedor. El correo, el alojamiento (el servicio que mantiene tu página en línea) y otros servicios de terceros dependen del proyecto, y la propuesta indica cuáles aplican.",
       },
     ],
     caseSlugs: ["omg-serviteca", "xiomy-perfumeria", "abogada-mejia-rivera"],
@@ -216,7 +217,7 @@ export const services: Service[] = [
       {
         question: "¿El dominio y el alojamiento están incluidos?",
         answer:
-          "Te ayudamos a dejarlos configurados, pero sus renovaciones se pagan a cada proveedor. La propuesta indica qué servicios de terceros aplican y quién queda como titular.",
+          "El dominio sí: va incluido el primer año en todos los planes y queda a nombre de tu negocio. El alojamiento, que es el servicio que mantiene tu página en línea, depende del proyecto: la propuesta indica si se necesita y cuánto cuesta. Desde el segundo año, las renovaciones se pagan a cada proveedor.",
       },
       {
         question: "¿Atienden fuera de Bogotá?",
@@ -492,7 +493,7 @@ export const faqs = [
   },
   {
     q: "¿Qué pasa con el dominio, el correo y el alojamiento?",
-    a: "Nos encargamos de dejar todo funcionando: dominio, correo profesional y publicación del sitio. Cada año se renuevan el dominio y el correo con su proveedor, y te avisamos con tiempo cuál es el valor.",
+    a: "El dominio va incluido el primer año en todos los planes. Nos encargamos de dejar todo funcionando: dominio, correo profesional y publicación del sitio. Desde el segundo año, el dominio y el correo se renuevan con su proveedor y te avisamos con tiempo cuál es el valor. Si tu proyecto necesita alojamiento aparte (el servicio que mantiene la página en línea), la propuesta lo indica.",
   },
   {
     q: "¿Puedo editar el sitio yo mismo después?",

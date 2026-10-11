@@ -65,9 +65,11 @@ function Terms() {
               contra entrega, antes de publicar o transferir los archivos finales.
             </p>
             <p className="mt-3">
-              Dominio, correo, alojamiento, licencias, pasarelas de pago y otros servicios de
-              terceros no están incluidos, salvo que la propuesta los mencione expresamente. Sus
-              renovaciones y tarifas dependen de cada proveedor.
+              Todos los planes incluyen el registro del dominio durante el primer año, a nombre del
+              cliente. Su renovación desde el segundo año, así como el correo, el alojamiento, las
+              licencias, las pasarelas de pago y otros servicios de terceros, no están incluidos
+              salvo que la propuesta los mencione expresamente. Sus renovaciones y tarifas dependen
+              de cada proveedor.
             </p>
           </section>
 
