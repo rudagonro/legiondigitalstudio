@@ -58,7 +58,7 @@ export const plans: Plan[] = [
       "Una sola página, directa al punto: presenta tu negocio, genera confianza y lleva al visitante a escribirte por WhatsApp.",
     features: [
       "Diseño a la medida, sin plantillas genéricas",
-      "Dominio propio incluido el primer año",
+      "Dominio .com o .com.co y alojamiento incluidos el primer año",
       "Una página con todas tus secciones",
       "Adaptada a celular, tableta y computador",
       "Botón y chat de WhatsApp",
@@ -189,7 +189,7 @@ export const services: Service[] = [
       },
       {
         title: "Renovaciones",
-        text: "El dominio va incluido el primer año; desde el segundo se renueva con su proveedor. El correo, el alojamiento (el servicio que mantiene tu página en línea) y otros servicios de terceros dependen del proyecto, y la propuesta indica cuáles aplican.",
+        text: "El dominio .com o .com.co y el alojamiento van incluidos el primer año, y el dominio queda a nombre de tu negocio. Desde el segundo año te avisamos con tiempo el valor de la renovación. Otras extensiones, como .co, se cotizan aparte.",
       },
     ],
     caseSlugs: ["omg-serviteca", "xiomy-perfumeria", "abogada-mejia-rivera"],
@@ -217,7 +217,7 @@ export const services: Service[] = [
       {
         question: "¿El dominio y el alojamiento están incluidos?",
         answer:
-          "El dominio sí: va incluido el primer año en todos los planes y queda a nombre de tu negocio. El alojamiento, que es el servicio que mantiene tu página en línea, depende del proyecto: la propuesta indica si se necesita y cuánto cuesta. Desde el segundo año, las renovaciones se pagan a cada proveedor.",
+          "Sí. Todos los planes incluyen dominio .com o .com.co y alojamiento, el servicio que mantiene tu página en línea, durante el primer año. Nosotros nos encargamos de todo y después te entregamos la propiedad del dominio. Desde el segundo año te avisamos con tiempo el valor de la renovación.",
       },
       {
         question: "¿Atienden fuera de Bogotá?",
@@ -493,7 +493,7 @@ export const faqs = [
   },
   {
     q: "¿Qué pasa con el dominio, el correo y el alojamiento?",
-    a: "El dominio va incluido el primer año en todos los planes. Nos encargamos de dejar todo funcionando: dominio, correo profesional y publicación del sitio. Desde el segundo año, el dominio y el correo se renuevan con su proveedor y te avisamos con tiempo cuál es el valor. Si tu proyecto necesita alojamiento aparte (el servicio que mantiene la página en línea), la propuesta lo indica.",
+    a: "Todos los planes incluyen dominio .com o .com.co y alojamiento durante el primer año. Nos encargamos de dejar todo funcionando y después te entregamos la propiedad del dominio. Desde el segundo año te avisamos con tiempo el valor de la renovación.",
   },
   {
     q: "¿Puedo editar el sitio yo mismo después?",

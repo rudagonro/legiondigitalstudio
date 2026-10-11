@@ -229,9 +229,9 @@ function Home() {
         />
         <PlansGrid />
         <p className="mt-6 text-sm text-muted-foreground">
-          Los rangos dependen del número de páginas y del catálogo. Nos encargamos de dejar tu
-          proyecto publicado y funcionando; la renovación anual del dominio y el correo se paga a su
-          proveedor y te avisamos con tiempo.
+          Los rangos dependen del número de páginas y del catálogo. Todos los planes incluyen
+          dominio .com o .com.co y alojamiento el primer año: dejamos tu proyecto publicado y
+          funcionando, y te entregamos la propiedad del dominio.
         </p>
       </Section>
 

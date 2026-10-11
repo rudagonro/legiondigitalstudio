@@ -65,11 +65,12 @@ function Terms() {
               contra entrega, antes de publicar o transferir los archivos finales.
             </p>
             <p className="mt-3">
-              Todos los planes incluyen el registro del dominio durante el primer año, a nombre del
-              cliente. Su renovación desde el segundo año, así como el correo, el alojamiento, las
-              licencias, las pasarelas de pago y otros servicios de terceros, no están incluidos
-              salvo que la propuesta los mencione expresamente. Sus renovaciones y tarifas dependen
-              de cada proveedor.
+              Todos los planes incluyen, durante el primer año, el registro de un dominio .com o
+              .com.co a nombre del cliente y el alojamiento del sitio. Desde el segundo año, su
+              renovación corre por cuenta del cliente, y Legión Digital Studio informará el valor
+              con anticipación. Otras extensiones de dominio, el correo, las licencias, las
+              pasarelas de pago y otros servicios de terceros no están incluidos salvo que la
+              propuesta los mencione expresamente.
             </p>
           </section>
 
