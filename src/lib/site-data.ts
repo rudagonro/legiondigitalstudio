@@ -71,7 +71,7 @@ export const plans: Plan[] = [
     slug: "autoadministrable",
     name: "Sitio Autoadministrable",
     formType: "Sitio completo autoadministrable",
-    price: "Desde $800.000",
+    price: "Desde $1.500.000",
     note: "Entrega en 2 a 3 semanas",
 
     summary:
@@ -91,7 +91,7 @@ export const plans: Plan[] = [
     slug: "cms-ecommerce",
     name: "Tienda en Línea",
     formType: "Tienda en línea",
-    price: "Desde $2.000.000",
+    price: "Desde $2.500.000",
     note: "Entrega en 3 a 5 semanas",
 
     summary:
@@ -147,7 +147,7 @@ export const services: Service[] = [
     ],
     metaTitle: "Diseño de páginas web en Colombia | Legión Digital Studio",
     metaDescription:
-      "Páginas web a la medida en toda Colombia: landing desde $500.000, sitio autoadministrable desde $800.000 y tienda desde $2.000.000. Alcance, tiempos y condiciones claras.",
+      "Páginas web a la medida en toda Colombia: landing desde $500.000, sitio autoadministrable desde $1.500.000 y tienda desde $2.500.000. Alcance, tiempos y condiciones claras.",
     process: [
       {
         title: "Conversación inicial",
@@ -202,7 +202,7 @@ export const services: Service[] = [
       {
         question: "¿Cuánto cuesta una página web con Legión Digital Studio?",
         answer:
-          "Una landing page cuesta desde $500.000, un sitio autoadministrable desde $800.000 y una tienda en línea desde $2.000.000. El valor exacto depende del número de páginas, del catálogo y de las funciones, y queda fijado por escrito antes de comenzar.",
+          "Una landing page cuesta desde $500.000, un sitio autoadministrable desde $1.500.000 y una tienda en línea desde $2.500.000. El valor exacto depende del número de páginas, del catálogo y de las funciones, y queda fijado por escrito antes de comenzar.",
       },
       {
         question: "¿Qué necesito tener listo para empezar?",
@@ -260,7 +260,7 @@ export const services: Service[] = [
     ],
     metaTitle: "Tiendas en línea en Colombia | Legión Digital Studio",
     metaDescription:
-      "Desarrollo de tiendas en línea con catálogo, carrito y medios de pago. Desde $2.000.000, con panel administrable y SEO técnico.",
+      "Desarrollo de tiendas en línea con catálogo, carrito y medios de pago. Desde $2.500.000, con panel administrable y SEO técnico.",
   },
   {
     slug: "seo-tecnico",

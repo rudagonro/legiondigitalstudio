@@ -37,7 +37,7 @@ export const blogPosts: BlogPost[] = [
     readingMinutes: 9,
     relatedService: "/servicios/paginas-web/",
     answer:
-      "En Legión Digital Studio una landing page cuesta desde $500.000, un sitio autoadministrable desde $800.000 y una tienda en línea desde $2.000.000. El valor exacto depende del número de páginas, el contenido, el panel, el catálogo y las integraciones. Todos los planes incluyen dominio .com o .com.co y alojamiento durante el primer año; desde el segundo año se pagan sus renovaciones.",
+      "En Legión Digital Studio una landing page cuesta desde $500.000, un sitio autoadministrable desde $1.500.000 y una tienda en línea desde $2.500.000. El valor exacto depende del número de páginas, el contenido, el panel, el catálogo y las integraciones. Todos los planes incluyen dominio .com o .com.co y alojamiento durante el primer año; desde el segundo año se pagan sus renovaciones.",
     sections: [
       {
         heading: "La respuesta corta: depende del alcance, no solo del diseño",
@@ -53,8 +53,8 @@ export const blogPosts: BlogPost[] = [
         ],
         bullets: [
           "Landing page: desde $500.000, entrega en 5 a 8 días. Una sola página con tu propuesta, beneficios, formulario y WhatsApp.",
-          "Sitio autoadministrable: desde $800.000, entrega en 2 a 3 semanas. Entre 5 y 10 páginas, una por servicio, y un panel para cambiar textos e imágenes.",
-          "Tienda en línea: desde $2.000.000, entrega en 3 a 5 semanas. Catálogo con categorías, carrito o cotización, medios de pago y panel de productos.",
+          "Sitio autoadministrable: desde $1.500.000, entrega en 2 a 3 semanas. Entre 5 y 10 páginas, una por servicio, y un panel para cambiar textos e imágenes.",
+          "Tienda en línea: desde $2.500.000, entrega en 3 a 5 semanas. Catálogo con categorías, carrito o cotización, medios de pago y panel de productos.",
           "Software a la medida: se cotiza según procesos, usuarios, reportes, inventarios e integraciones.",
         ],
       },
@@ -179,7 +179,7 @@ export const blogPosts: BlogPost[] = [
           "Estructura: la landing es una página larga; el sitio reparte el contenido en varias direcciones.",
           "Tráfico: la landing suele recibir visitas de anuncios o redes; el sitio, además, de búsquedas en Google.",
           "Posicionamiento: la landing compite por una intención principal; el sitio puede competir por una búsqueda en cada página.",
-          "Inversión con Legión: landing desde $500.000 en 5 a 8 días; sitio autoadministrable desde $800.000 en 2 a 3 semanas.",
+          "Inversión con Legión: landing desde $500.000 en 5 a 8 días; sitio autoadministrable desde $1.500.000 en 2 a 3 semanas.",
         ],
       },
       {
@@ -654,7 +654,7 @@ export const blogPosts: BlogPost[] = [
     readingMinutes: 9,
     relatedService: "/servicios/tiendas-en-linea/",
     answer:
-      "En Legión Digital Studio una tienda en línea parte desde $2.000.000. El valor puede aumentar según productos, variantes, pagos, envíos, inventario, usuarios e integraciones necesarias.",
+      "En Legión Digital Studio una tienda en línea parte desde $2.500.000. El valor puede aumentar según productos, variantes, pagos, envíos, inventario, usuarios e integraciones necesarias.",
     sections: [
       {
         heading: "Una tienda virtual es más que un catálogo",
