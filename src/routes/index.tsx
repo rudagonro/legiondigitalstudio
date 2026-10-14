@@ -6,6 +6,8 @@ import stepDescubrimiento from "@/assets/step-descubrimiento.jpg";
 import stepDiseno from "@/assets/step-diseno.jpg";
 import stepLanzamiento from "@/assets/step-lanzamiento.jpg";
 
+import { CompactCard } from "@/components/site/CompactCard";
+import { ScrollStatement } from "@/components/site/ScrollStatement";
 import { CtaBand, PlansGrid, Section, SectionHeading } from "@/components/site/Bits";
 import { blogPosts } from "@/lib/blog-data";
 import { cases, faqs, services, site } from "@/lib/site-data";
@@ -168,6 +170,8 @@ function Home() {
         </div>
       </section>
 
+      <ScrollStatement />
+
       {/* Pillars */}
       <Section>
         <SectionHeading
@@ -175,15 +179,10 @@ function Home() {
           title="Lo que no verás en un sitio hecho con plantilla."
           intro="Muchos estudios entregan el mismo tema de siempre con veinte extensiones encima. Nosotros escribimos el sitio a mano: pesa menos, carga más rápido y no se rompe con el tiempo."
         />
-        <div className="mt-8 grid grid-cols-2 gap-3 sm:gap-6 lg:grid-cols-4 md:mt-12">
+        <div className="compact-grid compact-grid-four mt-8 md:mt-12">
           {pillars.map((p) => (
-            <article key={p.title} className="plate plate-hover p-4 sm:p-6">
-              <p.icon className="h-5 w-5 text-primary sm:h-6 sm:w-6" />
-              <h3 className="mt-3 font-display text-base sm:text-lg">{p.title}</h3>
-              <p className="mt-2 text-[0.82rem] leading-relaxed text-muted-foreground sm:text-sm">
-                {p.text}
-              </p>
-            </article>
+            <CompactCard key={p.title} title={p.title} summary={p.text}
+              preview={<p.icon aria-hidden="true" className="h-7 w-7 text-primary" />} />
           ))}
         </div>
       </Section>
@@ -195,24 +194,16 @@ function Home() {
           title="Todo lo que tu presencia digital necesita."
           intro="Cada servicio tiene su propia página con detalle, alcance y precios de referencia."
         />
-        <div className="mt-8 grid gap-4 sm:gap-6 md:mt-12 md:grid-cols-2">
+        <div className="compact-grid mt-8 md:mt-12">
           {services.slice(0, 4).map((s) => (
-            <Link
-              key={s.slug}
-              to="/servicios/$slug/"
-              params={{ slug: s.slug }}
-              className="plate plate-hover group flex flex-col p-5 sm:p-7"
-            >
-              <p className="font-mono text-[0.62rem] uppercase tracking-[0.16em] text-primary">
-                {s.tagline}
-              </p>
-              <h3 className="mt-2 font-display text-lg sm:text-xl">{s.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{s.summary}</p>
-              <span className="mt-4 inline-flex items-center gap-2 font-display text-sm font-bold text-primary sm:mt-6">
-                Ver detalle
-                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-              </span>
-            </Link>
+            <CompactCard key={s.slug} title={s.title} label={s.tagline} summary={s.summary}>
+              <ul className="list-disc space-y-2 pl-5 text-sm leading-relaxed">
+                {s.bullets.map((bullet) => <li key={bullet}>{bullet}</li>)}
+              </ul>
+              <Link to="/servicios/$slug/" params={{ slug: s.slug }} className="btn-base btn-outline mt-2">
+                Ver servicio completo <ArrowRight className="h-4 w-4" />
+              </Link>
+            </CompactCard>
           ))}
         </div>
         <Link to="/servicios/" className="btn-base btn-outline mt-6">
@@ -242,24 +233,12 @@ function Home() {
           title="De la idea a tu proyecto en línea."
           intro="Cuatro pasos claros, sin vueltas: así entregamos rápido sin sacrificar calidad."
         />
-        <ol className="mt-8 grid grid-cols-2 gap-3 sm:gap-5 lg:grid-cols-4 md:mt-10">
+        <ol className="compact-grid compact-grid-four mt-8 md:mt-10">
           {steps.map((s) => (
-            <li key={s.n} className="plate flex flex-col p-4 sm:p-5">
-              <img
-                src={s.img}
-                alt={s.title}
-                width={512}
-                height={512}
-                loading="lazy"
-                className="h-16 w-16 rounded-xl object-cover sm:h-20 sm:w-20"
-              />
-              <span className="mt-3 font-mono text-[0.62rem] font-bold uppercase tracking-[0.16em] text-primary">
-                Paso {s.n}
-              </span>
-              <h3 className="mt-1 font-display text-base">{s.title}</h3>
-              <p className="mt-1 text-[0.82rem] leading-relaxed text-muted-foreground sm:text-sm">
-                {s.text}
-              </p>
+            <li key={s.n}>
+              <CompactCard title={s.title} label={`Paso ${s.n}`} summary={s.text}
+                preview={<img src={s.img} alt="" width={512} height={512} loading="lazy"
+                  className="compact-step-image" />} />
             </li>
           ))}
         </ol>
@@ -272,25 +251,20 @@ function Home() {
           title="Sitios ya en línea, no maquetas."
           intro="Proyectos con panel de administración, pagos en línea, acceso para clientes y WhatsApp integrado. Cada caso tiene su propia página con el reto, lo que hicimos y el resultado."
         />
-        <div className="mt-8 grid gap-4 sm:grid-cols-2 sm:gap-6 md:mt-12 lg:grid-cols-3">
+        <div className="compact-grid compact-grid-three mt-8 md:mt-12">
           {cases.slice(0, 3).map((c) => (
-            <Link
-              key={c.slug}
-              to="/trabajo/$slug/"
-              params={{ slug: c.slug }}
-              className="plate plate-hover group flex flex-col p-5 sm:p-7"
-            >
-              <span className="font-mono text-[0.62rem] uppercase tracking-[0.16em] text-primary">
-                {c.status}
-              </span>
-              <h3 className="mt-2 font-display text-lg">{c.client}</h3>
-              <p className="mt-1 text-xs text-muted-foreground">{c.sector}</p>
-              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{c.summary}</p>
-              <span className="mt-4 inline-flex items-center gap-2 font-display text-sm font-bold text-primary sm:mt-6">
-                Ver el caso
-                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-              </span>
-            </Link>
+            <CompactCard key={c.slug} title={c.client} label={c.sector} summary={c.summary}
+              preview={<span className="compact-project-mark" aria-hidden="true">{c.client.slice(0, 2)}</span>}>
+              <ul className="list-disc space-y-2 pl-5 text-sm leading-relaxed">
+                {c.capabilities.map((capability) => <li key={capability}>{capability}</li>)}
+              </ul>
+              <Link to="/trabajo/$slug/" params={{ slug: c.slug }} className="btn-base btn-outline mt-2">
+                Ver el caso completo <ArrowRight className="h-4 w-4" />
+              </Link>
+              <a href={c.url} target="_blank" rel="noopener noreferrer" className="btn-base btn-primary">
+                Visitar sitio
+              </a>
+            </CompactCard>
           ))}
         </div>
         <Link to="/trabajo/" className="btn-base btn-outline mt-6">
@@ -305,19 +279,19 @@ function Home() {
           title="Decisiones digitales, explicadas sin enredos."
           intro="Contenido práctico para entender precios, posicionamiento y qué necesita una página para convertirse en una herramienta comercial."
         />
-        <div className="mt-8 grid gap-4 sm:gap-6 md:mt-12 lg:grid-cols-3">
+        <div className="compact-grid compact-grid-three mt-8 md:mt-12">
           {blogPosts.slice(0, 3).map((post) => (
             <Link
               key={post.slug}
               to="/blog/$slug/"
               params={{ slug: post.slug }}
-              className="plate plate-hover group flex flex-col p-5 sm:p-7"
+              className="plate plate-hover compact-blog-card group flex flex-col p-4 sm:p-6"
             >
               <span className="font-mono text-[0.62rem] uppercase tracking-[0.16em] text-primary">
                 {post.category} · {post.readingMinutes} min
               </span>
-              <h3 className="mt-2 font-display text-lg leading-snug">{post.title}</h3>
-              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{post.excerpt}</p>
+              <h3 className="mt-2 font-display text-sm leading-snug sm:text-lg">{post.title}</h3>
+              <p className="mt-3 hidden text-sm leading-relaxed text-muted-foreground sm:block">{post.excerpt}</p>
               <span className="mt-5 inline-flex items-center gap-2 font-display text-sm font-bold text-primary">
                 Leer la guía
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />

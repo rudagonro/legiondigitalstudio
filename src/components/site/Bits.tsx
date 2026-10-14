@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { Check, MessageCircle } from "lucide-react";
-import { useState, type ReactNode } from "react";
+import { type ReactNode } from "react";
+import { CompactCard } from "./CompactCard";
 import { plans, site, whatsappLink, type Plan } from "@/lib/site-data";
 
 export function Section({
@@ -77,87 +78,41 @@ export function PageHero({
   );
 }
 
-export function PlanCard({
-  plan,
-  selected = false,
-  onSelect,
-}: {
-  plan: Plan;
-  selected?: boolean;
-  onSelect?: () => void;
-}) {
+export function PlanCard({ plan }: { plan: Plan }) {
   return (
-    <article
-      onMouseEnter={onSelect}
-      onFocus={onSelect}
-      onClick={onSelect}
-      tabIndex={onSelect ? 0 : undefined}
-      className={`plate plate-hover flex cursor-pointer flex-col p-5 transition-all sm:p-7 ${
-        selected ? "border-primary/60 ring-2 ring-primary/25 shadow-plate" : ""
-      }`}
+    <CompactCard
+      title={plan.name}
+      label={plan.featured ? "Más pedido" : "Página web"}
+      summary={plan.summary}
+      className={plan.featured ? "compact-card-featured" : ""}
+      preview={<span className="compact-plan-price">{plan.price}</span>}
     >
-      <div className="grid grid-cols-[minmax(0,1fr)_auto] items-start gap-3">
-        <h3 className="min-w-0 font-display text-lg sm:text-xl">{plan.name}</h3>
-        {plan.featured ? (
-          <span
-            className={`shrink-0 rounded-full px-2.5 py-1 font-mono text-[0.6rem] uppercase tracking-[0.14em] ${
-              selected
-                ? "bg-primary text-primary-foreground"
-                : "border border-border text-muted-foreground"
-            }`}
-          >
-            Más pedido
-          </span>
-        ) : null}
-      </div>
-      <p className="mt-4 font-display text-2xl text-primary sm:text-3xl">{plan.price}</p>
-      <p className="mt-1 font-mono text-[0.66rem] uppercase tracking-[0.14em] text-muted-foreground">
-        {plan.note}
-      </p>
-      <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{plan.summary}</p>
-      <ul className="mt-5 space-y-2 text-sm">
-        {plan.features.map((f) => (
-          <li key={f} className="flex gap-2.5">
-            <Check className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
-            <span className="min-w-0 text-muted-foreground">{f}</span>
+      <p className="font-display text-2xl text-primary">{plan.price}</p>
+      <p className="text-sm text-muted-foreground">{plan.note}</p>
+      <ul className="space-y-3 text-sm">
+        {plan.features.map((feature) => (
+          <li key={feature} className="flex gap-2.5">
+            <Check aria-hidden="true" className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+            <span>{feature}</span>
           </li>
         ))}
       </ul>
-      <a
-        href={whatsappLink(`el plan ${plan.name}`)}
-        target="_blank"
-        rel="noopener noreferrer"
-        data-cta="plan_card"
-        data-plan={plan.slug}
-        className={`btn-base mt-6 w-full ${selected ? "btn-primary" : "btn-outline"}`}
-      >
+      <a href={whatsappLink(`el plan ${plan.name}`)} target="_blank" rel="noopener noreferrer"
+        data-cta="plan_card" data-plan={plan.slug} className="btn-base btn-primary mt-2 w-full">
         Cotizar este plan
       </a>
-      <Link
-        to="/contacto/"
-        search={{ plan: plan.slug }}
-        className="mt-3 text-center text-xs font-medium text-muted-foreground underline-offset-4 hover:text-primary hover:underline"
-      >
+      <Link to="/contacto/" search={{ plan: plan.slug }}
+        className="text-center text-sm font-medium text-primary underline underline-offset-4">
         Prefiero enviar el formulario
       </Link>
-    </article>
+    </CompactCard>
   );
 }
 
 export function PlansGrid() {
-  const featuredSlug = plans.find((p) => p.featured)?.slug ?? plans[0]!.slug;
-  const [selected, setSelected] = useState(featuredSlug);
-
   return (
-    <div className="mt-8 grid gap-4 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3 md:mt-12">
-      {plans.map((p) => (
-        <PlanCard
-          key={p.slug}
-          plan={p}
-          selected={selected === p.slug}
-          onSelect={() => setSelected(p.slug)}
-        />
-      ))}
+    <div className="compact-grid compact-grid-three mt-8 md:mt-12">
+      {plans.map((plan) => <PlanCard key={plan.slug} plan={plan} />)}
     </div>
   );
 }
