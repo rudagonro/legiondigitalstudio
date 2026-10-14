@@ -8,6 +8,8 @@ import stepLanzamiento from "@/assets/step-lanzamiento.jpg";
 
 import { CompactCard } from "@/components/site/CompactCard";
 import { ProjectCard } from "@/components/site/ProjectCard";
+import { CodeShowcase } from "@/components/site/CodeShowcase";
+import { SoftwareDemo } from "@/components/site/SoftwareDemo";
 import { ScrollStatement } from "@/components/site/ScrollStatement";
 import { CtaBand, PlansGrid, Section, SectionHeading } from "@/components/site/Bits";
 import { blogPosts } from "@/lib/blog-data";
@@ -171,6 +173,7 @@ function Home() {
         </div>
       </section>
 
+      <CodeShowcase />
       <ScrollStatement />
 
       {/* Pillars */}
@@ -198,6 +201,7 @@ function Home() {
         <div className="compact-grid mt-8 md:mt-12">
           {services.slice(0, 4).map((s) => (
             <CompactCard key={s.slug} title={s.title} label={s.tagline} summary={s.summary}>
+              {s.slug === "desarrollo-software" ? <SoftwareDemo /> : null}
               <ul className="list-disc space-y-2 pl-5 text-sm leading-relaxed">
                 {s.bullets.map((bullet) => <li key={bullet}>{bullet}</li>)}
               </ul>
