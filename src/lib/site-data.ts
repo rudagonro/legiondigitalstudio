@@ -307,6 +307,7 @@ export type CaseStudy = {
   sector: string;
   capabilities: string[];
   url: string;
+  logo: string;
   summary: string;
   challenge: string;
   work: string[];
@@ -318,7 +319,8 @@ export type CaseStudy = {
 export const cases: CaseStudy[] = [
   {
     slug: "legioncoin",
-    client: "LegionCoin",
+    logo: "/project-logos/legion-coin.webp",
+    client: "Legion Coin",
     status: "En línea",
     sector: "E-commerce · Monedas conmemorativas",
     capabilities: [
@@ -352,6 +354,7 @@ export const cases: CaseStudy[] = [
   },
   {
     slug: "omg-serviteca",
+    logo: "/project-logos/omg-serviteca.webp",
     client: "OMG Serviteca",
     status: "En línea",
     sector: "Automotriz · Taller en Chía",
@@ -385,6 +388,7 @@ export const cases: CaseStudy[] = [
   },
   {
     slug: "illuminare",
+    logo: "/project-logos/illuminare.webp",
     client: "Illuminare",
     status: "En línea",
     sector: "Salud y educación · Psicopedagogía",
@@ -410,6 +414,7 @@ export const cases: CaseStudy[] = [
   },
   {
     slug: "abogada-mejia-rivera",
+    logo: "/project-logos/abogada-mejia-rivera.webp",
     client: "Abogada Mejía Rivera",
     status: "En línea",
     sector: "Servicios profesionales · Derecho laboral",
@@ -442,6 +447,7 @@ export const cases: CaseStudy[] = [
   },
   {
     slug: "xiomy-perfumeria",
+    logo: "/project-logos/xiomy-perfumeria.webp",
     client: "Xiomy Perfumería",
     status: "En línea",
     sector: "Retail · Perfumería",
@@ -473,6 +479,11 @@ export const cases: CaseStudy[] = [
       "Vitrina digital para una perfumería colombiana: catálogo filtrable, panel de administración y consulta de cada fragancia por WhatsApp.",
   },
 ];
+
+const homepageProjectSlugs = ["omg-serviteca", "legioncoin", "abogada-mejia-rivera"];
+export const featuredCases = homepageProjectSlugs.flatMap((slug) => cases.filter((project) => project.slug === slug));
+export const portfolioCases = [...homepageProjectSlugs, "xiomy-perfumeria", "illuminare"]
+  .flatMap((slug) => cases.filter((project) => project.slug === slug));
 
 export const faqs = [
   {

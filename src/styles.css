@@ -18,7 +18,9 @@
 .compact-card-featured { border-color: var(--primary); background: var(--secondary); }
 .compact-plan-price { font-family: var(--font-display); font-size: clamp(17px, 4.5vw, 22px); font-weight: 800; line-height: 1.3; color: var(--primary); }
 .compact-step-image { width: 100%; height: 100px; object-fit: cover; border-radius: 8px; }
-.compact-project-mark { display: grid; place-items: center; width: 56px; height: 56px; border-radius: 12px; background: var(--secondary); color: var(--primary); font-size: 24px; font-weight: 800; }
+.project-logo-frame { display: flex; align-items: center; justify-content: center; width: 100%; height: 112px; padding: 6px; background: var(--background); border-radius: 8px; overflow: hidden; }
+.project-logo-frame img { display: block; width: 100%; max-width: 200px; height: 100%; object-fit: contain; }
+.portfolio-grid > :last-child { grid-column: auto; }
 .card-detail-panel { width: calc(100% - 24px); max-width: 560px; max-height: 85dvh; overflow-y: auto; overscroll-behavior: contain; border-radius: 16px; padding: 24px; }
 .compact-blog-card { min-height: 180px; border-radius: 12px; }
 .compact-grid-three > :last-child { grid-column: 1 / -1; }

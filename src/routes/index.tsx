@@ -7,10 +7,11 @@ import stepDiseno from "@/assets/step-diseno.jpg";
 import stepLanzamiento from "@/assets/step-lanzamiento.jpg";
 
 import { CompactCard } from "@/components/site/CompactCard";
+import { ProjectCard } from "@/components/site/ProjectCard";
 import { ScrollStatement } from "@/components/site/ScrollStatement";
 import { CtaBand, PlansGrid, Section, SectionHeading } from "@/components/site/Bits";
 import { blogPosts } from "@/lib/blog-data";
-import { cases, faqs, services, site } from "@/lib/site-data";
+import { featuredCases, faqs, services, site } from "@/lib/site-data";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -252,20 +253,7 @@ function Home() {
           intro="Proyectos con panel de administración, pagos en línea, acceso para clientes y WhatsApp integrado. Cada caso tiene su propia página con el reto, lo que hicimos y el resultado."
         />
         <div className="compact-grid compact-grid-three mt-8 md:mt-12">
-          {cases.slice(0, 3).map((c) => (
-            <CompactCard key={c.slug} title={c.client} label={c.sector} summary={c.summary}
-              preview={<span className="compact-project-mark" aria-hidden="true">{c.client.slice(0, 2)}</span>}>
-              <ul className="list-disc space-y-2 pl-5 text-sm leading-relaxed">
-                {c.capabilities.map((capability) => <li key={capability}>{capability}</li>)}
-              </ul>
-              <Link to="/trabajo/$slug/" params={{ slug: c.slug }} className="btn-base btn-outline mt-2">
-                Ver el caso completo <ArrowRight className="h-4 w-4" />
-              </Link>
-              <a href={c.url} target="_blank" rel="noopener noreferrer" className="btn-base btn-primary">
-                Visitar sitio
-              </a>
-            </CompactCard>
-          ))}
+          {featuredCases.map((project) => <ProjectCard key={project.slug} project={project} />)}
         </div>
         <Link to="/trabajo/" className="btn-base btn-outline mt-6">
           Ver todos los proyectos <ArrowRight className="h-4 w-4" />
